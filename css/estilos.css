@@ -1,0 +1,559 @@
+
+/*  PETMATCH CR - ESTILOS GENERALES  */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F7F3EC;
+    color: #2D2D2D;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/* ENCABEZADO Y NAVEGACION */
+
+.encabezado {
+    width: 100%;
+    background-color: #2F5D50;
+}
+
+.navegacion {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 35px;
+
+    width: 100%;
+    max-width: 1600px;
+    min-height: 95px;
+
+    margin: 0 auto;
+    padding: 15px 35px;
+}
+
+
+
+.logo {
+    flex-shrink: 0;
+}
+
+.logo img {
+    display: block;
+    width: auto;
+    max-width: 290px;
+    height: 65px;
+    object-fit: contain;
+}
+
+
+
+.menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 35px;
+
+    list-style: none;
+}
+
+.menu a {
+    color: #FFFFFF;
+    font-size: 16px;
+    padding-bottom: 8px;
+    white-space: nowrap;
+}
+
+.menu a:hover,
+.menu a.activo {
+    border-bottom: 2px solid #FFFFFF;
+}
+
+
+.boton-ingresar {
+    display: inline-block;
+    flex-shrink: 0;
+
+    background-color: #F7F3EC;
+    color: #2D2D2D;
+
+    padding: 13px 28px;
+    border-radius: 30px;
+
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+
+/*  CONTENIDO PRINCIPAL */
+
+main {
+    width: 100%;
+}
+
+
+/* PORTADA PRINCIPAL */
+
+.portada {
+    position: relative;
+    width: 100%;
+    min-height: 630px;
+
+    overflow: hidden;
+    background-color: #F7F3EC;
+}
+
+
+.imagen-portada {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    width: 62%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center top;
+}
+
+
+.portada::after {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: 35%;
+
+    width: 30%;
+    height: 100%;
+
+    background: linear-gradient(
+        to right,
+        #F7F3EC 0%,
+        rgba(247, 243, 236, 0.90) 20%,
+        rgba(247, 243, 236, 0.45) 65%,
+        rgba(247, 243, 236, 0) 100%
+    );
+
+    pointer-events: none;
+}
+
+
+.contenido-portada {
+    position: relative;
+    z-index: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    width: 45%;
+    min-height: 630px;
+
+    padding: 70px 30px 70px 6%;
+}
+
+
+.etiqueta {
+    display: inline-block;
+
+    background-color: #A8BFAF;
+    color: #2D2D2D;
+
+    padding: 12px 22px;
+    border-radius: 30px;
+
+    font-size: 15px;
+    margin-bottom: 30px;
+}
+
+
+.contenido-portada h1 {
+    color: #2F5D50;
+
+    font-size: 58px;
+    line-height: 1.15;
+
+    margin-bottom: 25px;
+}
+
+.contenido-portada h1 span {
+    display: block;
+    color: #6B4F3A;
+}
+
+
+.descripcion-portada {
+    max-width: 440px;
+
+    font-size: 20px;
+    line-height: 1.6;
+
+    margin-bottom: 35px;
+}
+
+/* Botones */
+
+.botones-portada {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.boton-principal,
+.boton-secundario {
+    display: inline-block;
+
+    padding: 15px 26px;
+    border-radius: 30px;
+
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.boton-principal {
+    background-color: #2F5D50;
+    color: #FFFFFF;
+}
+
+.boton-principal:hover {
+    background-color: #24493F;
+}
+
+.boton-secundario {
+    background-color: #F7F3EC;
+    color: #6B4F3A;
+
+    border: 2px solid #6B4F3A;
+}
+
+.boton-secundario:hover {
+    background-color: #EDE3D8;
+}
+
+
+/*  TARJETAS  */
+
+.informacion {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+
+    gap: 25px;
+
+    width: 100%;
+    padding: 45px 6% 55px;
+
+    background-color: #F7F3EC;
+}
+
+.tarjeta {
+    flex: 1;
+    max-width: 460px;
+
+    background-color: #FFFFFF;
+    border-radius: 22px;
+
+    padding: 35px 25px;
+    text-align: center;
+
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+}
+
+.icono-tarjeta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 72px;
+    height: 72px;
+
+    margin: 0 auto 22px;
+    border-radius: 50%;
+
+    background-color: #2F5D50;
+}
+
+
+.tarjeta:nth-child(2) .icono-tarjeta {
+    background-color: #6B4F3A;
+}
+
+/* Tercera tarjeta: verde salvia */
+
+.tarjeta:nth-child(3) .icono-tarjeta {
+    background-color: #A8BFAF;
+}
+
+
+.icono-blanco {
+    display: inline-block;
+
+    font-size: 36px;
+    line-height: 1;
+
+    filter: grayscale(1) brightness(0) invert(1);
+}
+
+
+.corazon-blanco {
+    color: #FFFFFF;
+
+    font-size: 46px;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.tarjeta h2 {
+    color: #2D2D2D;
+
+    font-size: 22px;
+    margin-bottom: 14px;
+}
+
+.tarjeta p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+
+/*  PIE DE PAGINA */
+
+.pie-pagina {
+    width: 100%;
+
+    padding: 32px 6%;
+
+    background-color: #2F5D50;
+    color: #FFFFFF;
+
+    text-align: center;
+}
+
+.pie-pagina p {
+    font-size: 15px;
+    margin: 7px 0;
+}
+
+
+/* Diferentes medidas */
+
+@media (max-width: 1100px) {
+
+    .navegacion {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .menu {
+        flex-wrap: wrap;
+        gap: 22px;
+    }
+
+    .portada {
+        min-height: 550px;
+    }
+
+    .imagen-portada {
+        width: 60%;
+        object-position: center top;
+    }
+
+    .contenido-portada {
+        width: 52%;
+        min-height: 550px;
+        padding: 60px 20px 60px 5%;
+    }
+
+    .contenido-portada h1 {
+        font-size: 43px;
+    }
+
+    .descripcion-portada {
+        font-size: 18px;
+    }
+
+    .informacion {
+        gap: 18px;
+        padding: 35px 4%;
+    }
+
+    .tarjeta {
+        padding: 30px 18px;
+    }
+
+    .tarjeta h2 {
+        font-size: 20px;
+    }
+
+}
+
+@media (max-width: 800px) {
+
+
+    .navegacion {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .logo img {
+        max-width: 250px;
+        height: 58px;
+    }
+
+    .menu {
+        justify-content: center;
+        gap: 18px;
+    }
+
+    .menu a {
+        font-size: 14px;
+    }
+
+    /* Portada */
+
+    .portada {
+        display: flex;
+        flex-direction: column;
+        min-height: auto;
+    }
+
+    .contenido-portada {
+        order: 1;
+
+        width: 100%;
+        min-height: auto;
+
+        padding: 55px 7%;
+    }
+
+    .contenido-portada h1 {
+        font-size: 44px;
+    }
+
+    .descripcion-portada {
+        font-size: 18px;
+    }
+
+
+    .imagen-portada {
+        position: relative;
+        order: 2;
+
+        width: 100%;
+        height: auto;
+
+        object-fit: contain;
+    }
+
+    .portada::after {
+        display: none;
+    }
+
+    /* Tarjetas */
+
+    .informacion {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .tarjeta {
+        flex: 1 1 250px;
+        max-width: none;
+    }
+
+}
+@media (max-width: 600px) {
+
+    /* Menú */
+
+    .navegacion {
+        gap: 18px;
+        padding: 20px 12px;
+    }
+
+    .logo img {
+        max-width: 220px;
+        height: 50px;
+    }
+
+    .menu {
+        gap: 14px;
+    }
+
+    .menu a {
+        font-size: 13px;
+    }
+
+    .boton-ingresar {
+        padding: 11px 24px;
+    }
+
+    .contenido-portada {
+        padding: 40px 25px;
+    }
+
+    .etiqueta {
+        font-size: 13px;
+        margin-bottom: 22px;
+    }
+
+    .contenido-portada h1 {
+        font-size: 37px;
+    }
+
+    .descripcion-portada {
+        font-size: 17px;
+        margin-bottom: 25px;
+    }
+
+    .botones-portada {
+        gap: 12px;
+    }
+
+    .boton-principal,
+    .boton-secundario {
+        padding: 13px 20px;
+        font-size: 14px;
+    }
+
+    /* Tarjetas */
+
+    .informacion {
+        flex-direction: column;
+        padding: 30px 20px;
+    }
+
+    .tarjeta {
+        width: 100%;
+        max-width: none;
+        padding: 30px 20px;
+    }
+
+    .tarjeta h2 {
+        font-size: 21px;
+    }
+
+    .pie-pagina {
+        padding: 25px 15px;
+    }
+
+    .pie-pagina p {
+        font-size: 13px;
+    }
+
+}
