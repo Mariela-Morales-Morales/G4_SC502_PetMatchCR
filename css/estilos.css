@@ -1,5 +1,5 @@
 
-/*  PETMATCH CR - ESTILOS GENERALES  */
+/* PetMatch CR */
 
 * {
     margin: 0;
@@ -7,10 +7,7 @@
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
+/* Estilos generales */
 body {
     font-family: Arial, sans-serif;
     background-color: #F7F3EC;
@@ -21,9 +18,7 @@ a {
     text-decoration: none;
 }
 
-
-/* ENCABEZADO Y NAVEGACION */
-
+/* Encabezado */
 .encabezado {
     width: 100%;
     background-color: #2F5D50;
@@ -34,19 +29,11 @@ a {
     align-items: center;
     justify-content: space-between;
     gap: 35px;
-
     width: 100%;
     max-width: 1600px;
     min-height: 95px;
-
     margin: 0 auto;
     padding: 15px 35px;
-}
-
-
-
-.logo {
-    flex-shrink: 0;
 }
 
 .logo img {
@@ -54,25 +41,23 @@ a {
     width: auto;
     max-width: 290px;
     height: 65px;
-    object-fit: contain;
 }
-
-
 
 .menu {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 35px;
+}
 
-    list-style: none;
+.menu li {
+    display: inline-block;
 }
 
 .menu a {
     color: #FFFFFF;
     font-size: 16px;
     padding-bottom: 8px;
-    white-space: nowrap;
 }
 
 .menu a:hover,
@@ -80,112 +65,58 @@ a {
     border-bottom: 2px solid #FFFFFF;
 }
 
-
 .boton-ingresar {
     display: inline-block;
-    flex-shrink: 0;
-
     background-color: #F7F3EC;
     color: #2D2D2D;
-
     padding: 13px 28px;
     border-radius: 30px;
-
     font-weight: bold;
-    white-space: nowrap;
 }
-
-
-/*  CONTENIDO PRINCIPAL */
 
 main {
     width: 100%;
 }
 
-
-/* PORTADA PRINCIPAL */
-
+/* Portada */
 .portada {
-    position: relative;
+    display: flex;
+    align-items: center;
     width: 100%;
-    min-height: 630px;
-
-    overflow: hidden;
     background-color: #F7F3EC;
 }
 
-
 .imagen-portada {
-    position: absolute;
-    top: 0;
-    right: 0;
-
-    width: 62%;
-    height: 100%;
-
-    object-fit: cover;
-    object-position: center top;
+    display: block;
+    width: 54%;
+    height: auto;
+    border-radius: 20px;
 }
-
-
-.portada::after {
-    content: "";
-
-    position: absolute;
-    top: 0;
-    left: 35%;
-
-    width: 30%;
-    height: 100%;
-
-    background: linear-gradient(
-        to right,
-        #F7F3EC 0%,
-        rgba(247, 243, 236, 0.90) 20%,
-        rgba(247, 243, 236, 0.45) 65%,
-        rgba(247, 243, 236, 0) 100%
-    );
-
-    pointer-events: none;
-}
-
 
 .contenido-portada {
-    position: relative;
-    z-index: 1;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-
-    width: 45%;
-    min-height: 630px;
-
-    padding: 70px 30px 70px 6%;
+    width: 46%;
+    min-height: 535px;
+    padding: 50px 4% 50px 6%;
 }
-
 
 .etiqueta {
     display: inline-block;
-
     background-color: #A8BFAF;
     color: #2D2D2D;
-
     padding: 12px 22px;
     border-radius: 30px;
-
     font-size: 15px;
     margin-bottom: 30px;
 }
 
-
 .contenido-portada h1 {
     color: #2F5D50;
-
     font-size: 58px;
     line-height: 1.15;
-
     margin-bottom: 25px;
 }
 
@@ -194,18 +125,14 @@ main {
     color: #6B4F3A;
 }
 
-
 .descripcion-portada {
     max-width: 440px;
-
     font-size: 20px;
     line-height: 1.6;
-
     margin-bottom: 35px;
 }
 
 /* Botones */
-
 .botones-portada {
     display: flex;
     flex-wrap: wrap;
@@ -215,10 +142,8 @@ main {
 .boton-principal,
 .boton-secundario {
     display: inline-block;
-
     padding: 15px 26px;
     border-radius: 30px;
-
     font-size: 16px;
     font-weight: bold;
     text-align: center;
@@ -236,7 +161,6 @@ main {
 .boton-secundario {
     background-color: #F7F3EC;
     color: #6B4F3A;
-
     border: 2px solid #6B4F3A;
 }
 
@@ -244,32 +168,24 @@ main {
     background-color: #EDE3D8;
 }
 
-
-/*  TARJETAS  */
-
+/* Tarjetas informativas */
 .informacion {
     display: flex;
     justify-content: center;
     align-items: stretch;
-
     gap: 25px;
-
     width: 100%;
-    padding: 45px 6% 55px;
-
+    padding: 24px 6% 55px;
     background-color: #F7F3EC;
 }
 
 .tarjeta {
-    flex: 1;
+    width: 31%;
     max-width: 460px;
-
     background-color: #FFFFFF;
     border-radius: 22px;
-
     padding: 35px 25px;
     text-align: center;
-
     box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
 }
 
@@ -277,41 +193,39 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-
     width: 72px;
     height: 72px;
-
     margin: 0 auto 22px;
     border-radius: 50%;
-
     background-color: #2F5D50;
 }
 
-
-.tarjeta:nth-child(2) .icono-tarjeta {
+.tarjeta-cafe .icono-tarjeta {
     background-color: #6B4F3A;
 }
 
-/* Tercera tarjeta: verde salvia */
-
-.tarjeta:nth-child(3) .icono-tarjeta {
+.tarjeta-salvia .icono-tarjeta {
     background-color: #A8BFAF;
 }
 
-
 .icono-blanco {
     display: inline-block;
-
-    font-size: 36px;
+    font-size: 46px;
     line-height: 1;
-
-    filter: grayscale(1) brightness(0) invert(1);
+    color: #FFFFFF;
 }
 
+.icono-huella {
+    background-color: #F7F3EC;
+}
+
+.icono-huella img {
+    width: 58px;
+    height: 58px;
+}
 
 .corazon-blanco {
     color: #FFFFFF;
-
     font-size: 46px;
     font-weight: bold;
     line-height: 1;
@@ -319,7 +233,6 @@ main {
 
 .tarjeta h2 {
     color: #2D2D2D;
-
     font-size: 22px;
     margin-bottom: 14px;
 }
@@ -329,17 +242,12 @@ main {
     line-height: 1.6;
 }
 
-
-/*  PIE DE PAGINA */
-
+/* Pie de página */
 .pie-pagina {
     width: 100%;
-
     padding: 32px 6%;
-
     background-color: #2F5D50;
     color: #FFFFFF;
-
     text-align: center;
 }
 
@@ -348,11 +256,8 @@ main {
     margin: 7px 0;
 }
 
-
-/* Diferentes medidas */
-
+/* Diseño adaptable de Inicio */
 @media (max-width: 1100px) {
-
     .navegacion {
         flex-wrap: wrap;
         justify-content: center;
@@ -365,17 +270,16 @@ main {
     }
 
     .portada {
-        min-height: 550px;
+        min-height: 510px;
     }
 
     .imagen-portada {
-        width: 60%;
-        object-position: center top;
+        width: 50%;
     }
 
     .contenido-portada {
-        width: 52%;
-        min-height: 550px;
+        width: 50%;
+        min-height: 510px;
         padding: 60px 20px 60px 5%;
     }
 
@@ -399,12 +303,9 @@ main {
     .tarjeta h2 {
         font-size: 20px;
     }
-
 }
 
 @media (max-width: 800px) {
-
-
     .navegacion {
         flex-direction: column;
         padding: 20px;
@@ -424,8 +325,6 @@ main {
         font-size: 14px;
     }
 
-    /* Portada */
-
     .portada {
         display: flex;
         flex-direction: column;
@@ -433,11 +332,8 @@ main {
     }
 
     .contenido-portada {
-        order: 1;
-
         width: 100%;
         min-height: auto;
-
         padding: 55px 7%;
     }
 
@@ -449,22 +345,10 @@ main {
         font-size: 18px;
     }
 
-
     .imagen-portada {
-        position: relative;
-        order: 2;
-
         width: 100%;
         height: auto;
-
-        object-fit: contain;
     }
-
-    .portada::after {
-        display: none;
-    }
-
-    /* Tarjetas */
 
     .informacion {
         flex-wrap: wrap;
@@ -472,15 +356,12 @@ main {
     }
 
     .tarjeta {
-        flex: 1 1 250px;
+        width: 45%;
         max-width: none;
     }
-
 }
+
 @media (max-width: 600px) {
-
-    /* Menú */
-
     .navegacion {
         gap: 18px;
         padding: 20px 12px;
@@ -531,8 +412,6 @@ main {
         font-size: 14px;
     }
 
-    /* Tarjetas */
-
     .informacion {
         flex-direction: column;
         padding: 30px 20px;
@@ -555,5 +434,535 @@ main {
     .pie-pagina p {
         font-size: 13px;
     }
+}
 
+/* Catálogo */
+.presentacion-catalogo {
+    padding: 58px 6% 45px;
+    text-align: center;
+    background-color: #F7F3EC;
+}
+
+.etiqueta-catalogo {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-bottom: 22px;
+    border-radius: 30px;
+    background-color: #E1E9E1;
+    color: #2F5D50;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.presentacion-catalogo h1 {
+    color: #2F5D50;
+    font-size: 42px;
+    line-height: 1.2;
+    margin-bottom: 16px;
+}
+
+.presentacion-catalogo h1 span {
+    color: #6B4F3A;
+}
+
+.descripcion-catalogo {
+    max-width: 650px;
+    margin: 0 auto;
+    font-size: 17px;
+    line-height: 1.7;
+    color: #555555;
+}
+
+.contenido-catalogo {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    align-items: start;
+    gap: 30px;
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 10px 6% 70px;
+}
+
+/* Filtros */
+.panel-filtros {
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    padding: 27px 22px;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.07);
+}
+
+.encabezado-filtros {
+    padding-bottom: 20px;
+    margin-bottom: 23px;
+    border-bottom: 1px solid #E9E9E9;
+}
+
+.encabezado-filtros h2 {
+    color: #2F5D50;
+    font-size: 21px;
+    margin-bottom: 7px;
+}
+
+.encabezado-filtros p {
+    color: #777777;
+    font-size: 14px;
+}
+
+.grupo-filtro {
+    margin-bottom: 23px;
+}
+
+.grupo-filtro label {
+    display: block;
+    margin-bottom: 9px;
+    color: #2D2D2D;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.grupo-filtro select {
+    width: 100%;
+    padding: 12px 10px;
+    border: 1px solid #D9E0DA;
+    border-radius: 9px;
+    background-color: #FFFFFF;
+    color: #4B4B4B;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+.grupo-filtro select:focus {
+    outline: 2px solid #A8BFAF;
+}
+
+.nota-filtros {
+    padding-top: 17px;
+    border-top: 1px solid #E9E9E9;
+    color: #777777;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+/* Resultados */
+.encabezado-resultados {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 5px 0 25px;
+}
+
+.encabezado-resultados h2 {
+    color: #2F5D50;
+    font-size: 25px;
+    margin-bottom: 8px;
+}
+
+.encabezado-resultados p {
+    color: #777777;
+    font-size: 15px;
+}
+
+.cantidad-mascotas {
+    display: inline-block;
+    padding: 9px 15px;
+    border-radius: 30px;
+    background-color: #E1E9E1;
+    color: #2F5D50;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* Tarjetas de mascotas */
+.cuadricula-mascotas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: stretch;
+    gap: 24px;
+}
+
+.tarjeta-mascota {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 19px;
+    background-color: #FFFFFF;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+}
+
+.foto-mascota {
+    position: relative;
+    width: 100%;
+    background-color: #E1E9E1;
+}
+
+.foto-mascota img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 19px 19px 0 0;
+}
+
+.estado-mascota {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    padding: 8px 12px;
+    border-radius: 25px;
+    background-color: #F7F3EC;
+    color: #2F5D50;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.datos-mascota {
+    padding: 21px 19px 23px;
+}
+
+.titulo-mascota {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+}
+
+.titulo-mascota h3 {
+    color: #2F5D50;
+    font-size: 24px;
+}
+
+.tipo-mascota {
+    color: #6B4F3A;
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.caracteristicas-mascota {
+    color: #666666;
+    font-size: 14px;
+    margin-bottom: 21px;
+}
+
+.boton-detalle {
+    display: block;
+    padding: 13px 15px;
+    border-radius: 30px;
+    background-color: #2F5D50;
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.boton-detalle:hover {
+    background-color: #24493F;
+}
+
+.aviso-prototipo {
+    margin-top: 28px;
+    color: #777777;
+    font-size: 13px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+/* Diseño adaptable del catálogo */
+@media (max-width: 1250px) {
+    .cuadricula-mascotas {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .contenido-catalogo {
+        grid-template-columns: 235px 1fr;
+        gap: 22px;
+        padding-left: 4%;
+        padding-right: 4%;
+    }
+}
+
+@media (max-width: 800px) {
+    .presentacion-catalogo {
+        padding: 42px 6% 30px;
+    }
+
+    .presentacion-catalogo h1 {
+        font-size: 34px;
+    }
+
+    .contenido-catalogo {
+        grid-template-columns: 1fr;
+        padding: 10px 5% 50px;
+    }
+
+    .panel-filtros {
+        width: 100%;
+    }
+
+    .cuadricula-mascotas {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .presentacion-catalogo h1 {
+        font-size: 29px;
+    }
+
+    .descripcion-catalogo {
+        font-size: 15px;
+    }
+
+    .encabezado-resultados h2 {
+        font-size: 22px;
+    }
+
+    .cuadricula-mascotas {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+/* Detalle de mascota */
+.pagina-detalle {
+    background-color: #F7F3EC;
+    padding: 42px 5% 75px;
+}
+
+.contenedor-detalle {
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+.volver-catalogo {
+    display: inline-block;
+    margin-bottom: 25px;
+    color: #2F5D50;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.volver-catalogo:hover {
+    text-decoration: underline;
+}
+
+.titulo-detalle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-bottom: 28px;
+}
+
+.subtitulo-detalle {
+    color: #6B4F3A;
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+
+.titulo-detalle h1 {
+    color: #2F5D50;
+    font-size: 44px;
+    margin-bottom: 9px;
+}
+
+.descripcion-detalle {
+    color: #666666;
+    font-size: 16px;
+}
+
+.disponibilidad-detalle {
+    padding: 10px 20px;
+    border-radius: 25px;
+    background-color: #E1E9E1;
+    color: #2F5D50;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Galería */
+.galeria-mascota {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+    max-width: 1000px;
+    margin: 0 auto 32px;
+}
+
+.galeria-mascota img {
+    display: block;
+    width: 100%;
+    height: auto;
+    background-color: #E8E5DE;
+    border-radius: 15px;
+}
+
+.galeria-mascota .foto-detalle-principal {
+    border: 2px solid #2F5D50;
+}
+
+/* Información de adopción */
+.informacion-detalle {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 26px;
+    align-items: start;
+}
+
+.panel-detalle {
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.07);
+}
+
+.panel-detalle h2 {
+    color: #2F5D50;
+    font-size: 23px;
+    margin-bottom: 18px;
+}
+
+.historia-detalle p {
+    color: #555555;
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+.subtitulo-caracteristicas {
+    margin-top: 28px;
+}
+
+.lista-caracteristicas {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.lista-caracteristicas div {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    background-color: #F7F3EC;
+    border-radius: 12px;
+    padding: 14px;
+}
+
+.lista-caracteristicas span,
+.dato-adopcion span {
+    color: #777777;
+    font-size: 13px;
+}
+
+.lista-caracteristicas strong,
+.dato-adopcion strong {
+    color: #2D2D2D;
+    font-size: 15px;
+}
+
+.descripcion-adopcion {
+    color: #555555;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 22px;
+}
+
+.dato-adopcion {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 0;
+    border-bottom: 1px solid #E9E9E9;
+}
+
+.boton-solicitar {
+    width: 100%;
+    margin-top: 25px;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 30px;
+    background-color: #A8BFAF;
+    color: #2D2D2D;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.aviso-solicitud {
+    margin-top: 13px;
+    color: #777777;
+    font-size: 12px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+/* Diseño adaptable del detalle */
+@media (max-width: 900px) {
+    .galeria-mascota {
+        gap: 10px;
+    }
+
+    .informacion-detalle {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .pagina-detalle {
+        padding: 30px 5% 50px;
+    }
+
+    .titulo-detalle h1 {
+        font-size: 36px;
+    }
+
+    .galeria-mascota {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .galeria-mascota img {
+        height: auto;
+    }
+
+    .panel-detalle {
+        padding: 23px;
+    }
+
+    .lista-caracteristicas {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Mensaje sin resultados */
+.mensaje-sin-resultados {
+    display: none;
+    padding: 30px;
+    margin-top: 20px;
+    background-color: #f5f5f5;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 16px;
+}
+
+/* Limpiar filtros */
+.boton-limpiar {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 18px;
+    background-color: #F7F3EC;
+    color: #2F5D50;
+    border: 1px solid #2F5D50;
+    border-radius: 9px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.boton-limpiar:hover {
+    background-color: #E1E9E1;
 }

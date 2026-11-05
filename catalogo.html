@@ -1,0 +1,289 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PetMatch CR | Catálogo de mascotas</title>
+
+    <link rel="icon" href="img/logos/05_Favicon_PetMatchCR.png">
+    <link rel="stylesheet" href="css/estilos.css">
+    <script src="js/app.js" defer></script>
+</head>
+
+<body>
+
+    <!-- Encabezado -->
+    <header class="encabezado">
+        <nav class="navegacion">
+
+            <a href="index.html" class="logo">
+                <img src="img/logos/04_Logo_Blanco_Para_Fondo_Verde.png" alt="PetMatch CR">
+            </a>
+
+            <ul class="menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="catalogo.html" class="activo">Mascotas</a></li>
+                <li><a href="index.html#adopcion">Sobre la adopción</a></li>
+                <li><a href="index.html#contacto">Contacto</a></li>
+            </ul>
+
+            <span class="boton-ingresar">Ingresar</span>
+
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- Presentación del catálogo -->
+        <section class="presentacion-catalogo">
+            <p class="etiqueta-catalogo">Pequeñas historias, grandes oportunidades</p>
+
+            <h1>Encuentra a tu compañero ideal <span>♡</span></h1>
+
+            <p class="descripcion-catalogo">
+                Conoce a los perros y gatos que esperan una segunda oportunidad.
+                Tal vez tu nuevo mejor amigo esté aquí.
+            </p>
+        </section>
+
+        <section class="contenido-catalogo">
+
+            <!-- Filtros -->
+            <aside class="panel-filtros">
+
+                <div class="encabezado-filtros">
+                    <h2>Filtrar mascotas</h2>
+                    <p>Encuentra lo que buscas</p>
+                </div>
+
+                <div class="grupo-filtro">
+                    <label for="especie">Especie</label>
+                    <select id="especie" name="especie">
+                        <option value="">Todas las especies</option>
+                        <option value="perro">Perros</option>
+                        <option value="gato">Gatos</option>
+                    </select>
+                </div>
+
+                <div class="grupo-filtro">
+                    <label for="raza">Raza</label>
+                    <select id="raza" name="raza">
+                        <option value="">Todas las razas</option>
+                        <option value="mestizo">Mestizo</option>
+                        <option value="salchicha">Salchicha</option>
+                        <option value="no-especificada">No especificada</option>
+                    </select>
+                </div>
+
+                <div class="grupo-filtro">
+                    <label for="edad">Edad</label>
+                    <select id="edad" name="edad">
+                        <option value="">Todas las edades</option>
+                        <option value="cachorro">Menos de 1 año</option>
+                        <option value="joven">De 1 a 3 años</option>
+                        <option value="adulto">Más de 3 años</option>
+                    </select>
+                </div>
+
+                <div class="grupo-filtro">
+                    <label for="tamano">Tamaño</label>
+                    <select id="tamano" name="tamano">
+                        <option value="">Todos los tamaños</option>
+                        <option value="pequeno">Pequeño</option>
+                        <option value="mediano">Mediano</option>
+                        <option value="grande">Grande</option>
+                    </select>
+                </div>
+
+                <div class="grupo-filtro">
+                    <label for="ubicacion">Ubicación</label>
+                    <select id="ubicacion" name="ubicacion">
+                        <option value="">Todas las ubicaciones</option>
+                        <option value="san-jose">San José</option>
+                        <option value="alajuela">Alajuela</option>
+                        <option value="heredia">Heredia</option>
+                        <option value="cartago">Cartago</option>
+                    </select>
+                </div>
+
+                <div class="grupo-filtro">
+                    <label for="estado">Estado</label>
+                    <select id="estado" name="estado">
+                        <option value="">Todos los estados</option>
+                        <option value="disponible">Disponible</option>
+                        <option value="proceso">En proceso</option>
+                    </select>
+                </div>
+
+                <button type="button" id="btnLimpiarFiltros" class="boton-limpiar">
+                    Limpiar filtros
+                </button>
+
+                <p class="nota-filtros">
+                    Selecciona las características que buscas
+                    para encontrar a tu compañero ideal.
+                </p>
+            </aside>
+
+            <!-- Tarjetas de mascotas -->
+            <div class="seccion-mascotas">
+
+                <div class="encabezado-resultados">
+                    <div>
+                        <h2>Mascotas que buscan un hogar</h2>
+                        <p>Conoce a nuestros seis compañeros de ejemplo.</p>
+                    </div>
+
+                    <span class="cantidad-mascotas">6 mascotas</span>
+                </div>
+
+                <div class="cuadricula-mascotas">
+
+                    <article class="tarjeta-mascota" id="milo">
+                        <div class="foto-mascota">
+                            <img src="img/mascotas/milo/milo-1.jpg" alt="Fotografía de Milo, perro mestizo">
+                            <span class="estado-mascota">Disponible</span>
+                        </div>
+
+                        <div class="datos-mascota">
+                            <div class="titulo-mascota">
+                                <h3>Milo</h3>
+                            </div>
+
+                            <p class="tipo-mascota">Perro mestizo</p>
+                            <p class="caracteristicas-mascota">2 años · Mediano · Alajuela</p>
+
+                            <a href="detalles/detalle-milo.html" class="boton-detalle">
+                                Conocer más ♡
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="tarjeta-mascota" id="luna">
+                        <div class="foto-mascota">
+                            <img src="img/mascotas/luna/luna-1.jpg" alt="Fotografía de Luna, gata atigrada">
+                            <span class="estado-mascota">Disponible</span>
+                        </div>
+
+                        <div class="datos-mascota">
+                            <div class="titulo-mascota">
+                                <h3>Luna</h3>
+                            </div>
+
+                            <p class="tipo-mascota">Gata atigrada</p>
+                            <p class="caracteristicas-mascota">1 año · Pequeña · San José</p>
+
+                            <a href="detalles/detalle-luna.html" class="boton-detalle">
+                                Conocer más ♡
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="tarjeta-mascota" id="canela">
+                        <div class="foto-mascota">
+                            <img src="img/mascotas/canela/canela-1.jpg" alt="Fotografía de Canela, perrita mestiza">
+                            <span class="estado-mascota">Disponible</span>
+                        </div>
+
+                        <div class="datos-mascota">
+                            <div class="titulo-mascota">
+                                <h3>Canela</h3>
+                            </div>
+
+                            <p class="tipo-mascota">Perrita mestiza</p>
+                            <p class="caracteristicas-mascota">8 meses · Pequeña · Heredia</p>
+
+                            <a href="detalles/detalle-canela.html" class="boton-detalle">
+                                Conocer más ♡
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="tarjeta-mascota" id="max">
+                        <div class="foto-mascota">
+                            <img src="img/mascotas/max/max-1.jpg" alt="Fotografía de Max, perro mestizo">
+                            <span class="estado-mascota">Disponible</span>
+                        </div>
+
+                        <div class="datos-mascota">
+                            <div class="titulo-mascota">
+                                <h3>Max</h3>
+                            </div>
+
+                            <p class="tipo-mascota">Perro mestizo</p>
+                            <p class="caracteristicas-mascota">4 meses · Grande · Cartago</p>
+
+                            <a href="detalles/detalle-max.html" class="boton-detalle">
+                                Conocer más ♡
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="tarjeta-mascota" id="nala">
+                        <div class="foto-mascota">
+                            <img src="img/mascotas/nala/nala-1.jpg" alt="Fotografía de Nala, gata naranja">
+                            <span class="estado-mascota">Disponible</span>
+                        </div>
+
+                        <div class="datos-mascota">
+                            <div class="titulo-mascota">
+                                <h3>Nala</h3>
+                            </div>
+
+                            <p class="tipo-mascota">Gata naranja</p>
+                            <p class="caracteristicas-mascota">3 años · Pequeña · San José</p>
+
+                            <a href="detalles/detalle-nala.html" class="boton-detalle">
+                                Conocer más ♡
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="tarjeta-mascota" id="toby">
+                        <div class="foto-mascota">
+                            <img src="img/mascotas/toby/toby-1.jpg" alt="Fotografía de Toby, perro salchicha">
+                            <span class="estado-mascota">Disponible</span>
+                        </div>
+
+                        <div class="datos-mascota">
+                            <div class="titulo-mascota">
+                                <h3>Toby</h3>
+                            </div>
+
+                            <p class="tipo-mascota">Perro salchicha</p>
+                            <p class="caracteristicas-mascota">5 años · Pequeño · Alajuela</p>
+
+                            <a href="detalles/detalle-toby.html" class="boton-detalle">
+                                Conocer más ♡
+                            </a>
+                        </div>
+                    </article>
+
+                </div>
+
+                <p id="mensajeSinResultados" class="mensaje-sin-resultados">
+                    No encontramos mascotas con esos filtros.
+                    Intenta seleccionar otras características. ♡
+                </p>
+
+                <p class="aviso-prototipo">
+                    Las mascotas, sus ubicaciones y características son datos
+                    de ejemplo para el prototipo académico de PetMatch CR.
+                </p>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="pie-pagina" id="contacto">
+        <p>PetMatch CR — Plataforma de adopción responsable</p>
+        <p>Un hogar cambia una vida. ♡</p>
+    </footer>
+
+</body>
+</html>
