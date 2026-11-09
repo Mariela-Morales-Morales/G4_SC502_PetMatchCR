@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis solicitudes | PetMatch CR</title>
+
+    <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="stylesheet" href="../css/adopciones.css">
+</head>
+<body data-pagina="enviadas">
+
+    <header class="encabezado">
+        <nav class="navegacion">
+            <a href="../index.html" class="logo">
+                <img src="../img/logos/04_Logo_Blanco_Para_Fondo_Verde.png"
+                     alt="PetMatch CR">
+            </a>
+
+            <ul class="menu">
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="../catalogo.html">Mascotas</a></li>
+                <li><a href="solicitar-adopcion.html">Adoptar</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="adopciones-contenedor">
+        <h1 class="adopciones-titulo">Mis solicitudes</h1>
+
+        <p class="adopciones-descripcion">
+            Consulta el estado de las solicitudes de adopción
+            que has enviado.
+        </p>
+
+        <div class="adopciones-nav">
+            <a href="solicitar-adopcion.html">Solicitar</a>
+            <a href="mis-solicitudes.html" class="activo">Mis solicitudes</a>
+            <a href="solicitudes-recibidas.html">Panel rescatista</a>
+        </div>
+
+        <div class="adopciones-mensaje">
+            Vista de demostración del adoptante:
+            Carlos Ramirez (carlos@ejemplo.com).
+        </div>
+
+        <section id="lista-solicitudes" class="adopciones-lista">
+        </section>
+    </main>
+
+    <script src="../js/adopciones.js"></script>
+</body>
+</html>

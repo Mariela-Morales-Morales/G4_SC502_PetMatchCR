@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitar adopción | PetMatch CR</title>
+
+    <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="stylesheet" href="../css/adopciones.css">
+</head>
+<body>
+
+    <header class="encabezado">
+        <nav class="navegacion">
+            <a href="../index.html" class="logo">
+                <img src="../img/logos/04_Logo_Blanco_Para_Fondo_Verde.png"
+                     alt="PetMatch CR">
+            </a>
+
+            <ul class="menu">
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="../catalogo.html">Mascotas</a></li>
+                <li><a href="mis-solicitudes.html">Mis solicitudes</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="adopciones-contenedor">
+        <h1 class="adopciones-titulo">Solicitar adopción</h1>
+        <p class="adopciones-descripcion">
+            Completa el formulario para dar el primer paso
+            hacia la adopción responsable de una mascota.
+        </p>
+
+        <div class="adopciones-nav">
+            <a href="solicitar-adopcion.html" class="activo">Solicitar</a>
+            <a href="mis-solicitudes.html">Mis solicitudes</a>
+            <a href="solicitudes-recibidas.html">Panel rescatista</a>
+        </div>
+
+        <section class="adopciones-tarjeta">
+            <h2>Formulario de solicitud</h2>
+
+            <form id="formulario-adopcion" class="adopciones-formulario">
+
+                <div class="adopciones-campo completo">
+                    <label for="mascota">Mascota que deseas adoptar</label>
+                    <select id="mascota" name="mascota" required>
+                        <option value="">Selecciona una mascota</option>
+                        <option value="luna">Luna</option>
+                        <option value="max">Max</option>
+                        <option value="canela">Canela</option>
+                        <option value="milo">Milo</option>
+                        <option value="nala">Nala</option>
+                        <option value="toby">Toby</option>
+                    </select>
+                </div>
+
+                <div class="adopciones-campo">
+                    <label for="nombre">Nombre completo</label>
+                    <input type="text" id="nombre" name="nombre"
+                           required placeholder="Tu nombre completo">
+                </div>
+
+                <div class="adopciones-campo">
+                    <label for="correo">Correo electrónico</label>
+                    <input type="email" id="correo" name="correo"
+                           required placeholder="ejemplo@correo.com">
+                </div>
+
+                <div class="adopciones-campo">
+                    <label for="telefono">Teléfono</label>
+                    <input type="tel" id="telefono" name="telefono"
+                           required placeholder="8888-8888">
+                </div>
+
+                <div class="adopciones-campo">
+                    <label for="vivienda">Tipo de vivienda</label>
+                    <select id="vivienda" name="vivienda" required>
+                        <option value="">Seleccionar</option>
+                        <option>Casa propia</option>
+                        <option>Casa alquilada</option>
+                        <option>Apartamento</option>
+                        <option>Otro</option>
+                    </select>
+                </div>
+
+                <div class="adopciones-campo completo">
+                    <label for="experiencia">
+                        ¿Tienes experiencia cuidando mascotas?
+                    </label>
+                    <textarea id="experiencia" name="experiencia"
+                              required></textarea>
+                </div>
+
+                <div class="adopciones-campo completo">
+                    <label for="motivo">
+                        ¿Por qué deseas adoptar esta mascota?
+                    </label>
+                    <textarea id="motivo" name="motivo"
+                              required></textarea>
+                </div>
+
+                <div class="adopciones-campo completo">
+                    <button type="submit" class="adopciones-boton">
+                        Enviar solicitud de adopción
+                    </button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <script src="../js/adopciones.js"></script>
+</body>
+</html>
