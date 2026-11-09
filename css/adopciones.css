@@ -297,3 +297,8 @@ body {
 .adopciones-contenedor {
     flex: 1;
 }
+
+/* Separación de tarjetas ancladas en el detalle */
+#resultado-solicitud {margin-top:22px;}
+#resultado-solicitud h2 {margin-bottom:14px;}
+#resultado-solicitud p {margin-bottom:9px;line-height:1.6;}

@@ -1,34 +1,35 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi perfil | PetMatch CR</title>
+    <title>PetMatch CR | Mi perfil</title>
+    <link rel="icon" href="../img/logos/05_Favicon_PetMatchCR.png">
     <link rel="stylesheet" href="../css/usuariosMascotas.css">
+    <link rel="stylesheet" href="../css/estilos.css">
     <script src="../js/usuarios.js" defer></script>
 </head>
-
 <body>
     <header class="encabezado">
         <nav class="navegacion">
-            <a href="../index.html" class="logo"><img src="../img/logos/04_Logo_Blanco_Para_Fondo_Verde.png"
-                    alt="PetMatch CR"></a>
-            <ul class="menu">
-                <li><a href="../index.html">Inicio</a></li>
-                <li><a href="../catalogo.html">Mascotas</a></li>
-                <li><a href="../mascota/publicaciones.html">Mis publicaciones</a></li>
-                <li><a href="../usuarios/perfil.html">Mi perfil</a></li>
-            </ul>
-            <a href="inicioSesion.html" class="boton-ingresar">Ingresar</a>
-        </nav>
+    <a href="../index.html" class="logo"><img src="../img/logos/04_Logo_Blanco_Para_Fondo_Verde.png" alt="PetMatch CR"></a>
+    <ul class="menu">
+        <li><a href="../index.html" >Inicio</a></li>
+        <li><a href="../catalogo.html" >Mascotas</a></li>
+        <li><a href="../adopciones/solicitar-adopcion.html" >Adoptar</a></li>
+        <li><a href="../index.html#adopcion">Sobre la adopción</a></li>
+        <li><a href="../usuarios/perfil.html" class="activo">Mi perfil</a></li>
+        <li><a href="../index.html#contacto">Contacto</a></li>
+    </ul>
+    <a href="../usuarios/inicioSesion.html" class="boton-ingresar">Ingresar</a>
+</nav>
     </header>
     <main>
         <section class="contenedor-usuario">
             <div class="encabezado-pagina">
                 <span class="etiqueta-catalogo">Tu espacio personal</span>
                 <h1>Mi perfil ♡</h1>
-                <p>Consulta y actualiza la información de tu cuenta.</p>
+                <p>Consulta y modifica temporalmente el perfil de ejemplo, administra tus mascotas y revisa tus solicitudes.</p>
             </div>
             <div class="dos-columnas">
                 <aside class="panel-usuario resumen-perfil">
@@ -37,32 +38,33 @@
                     <p id="correoPerfil">correo@ejemplo.com</p>
                     <ul class="lista-enlaces">
                         <li><a href="perfil.html">Editar mis datos</a></li>
-                        <li><a href="registroMascota.html">Registrar una mascota</a></li>
-                        <li><a href="publicaciones.html">Ver mis publicaciones</a></li>
+                        <li><a href="../mascota/registroMascota.html">Registrar una mascota</a></li>
+                        <li><a href="../mascota/publicaciones.html">Mis publicaciones</a></li>
+                        <li><a href="../adopciones/mis-solicitudes.html">Mis solicitudes de adopción</a></li>
+                        
                         <li><a href="inicioSesion.html" id="cerrarSesion">Cerrar sesión</a></li>
                     </ul>
                 </aside>
                 <section class="panel-usuario">
                     <h2>Información personal</h2>
+                    <p class="nota-demostracion">Perfil de prueba: los cambios se muestran en esta pantalla, pero no se almacenan.</p>
                     <form id="formPerfil" class="formulario">
-                        <div class="campo completo"><label for="perfilNombre">Nombre completo</label><input
-                                id="perfilNombre" required></div>
-                        <div class="campo"><label for="perfilTelefono">Teléfono</label><input id="perfilTelefono"
-                                type="tel" required></div>
-                        <div class="campo"><label for="perfilCorreo">Correo electrónico</label><input id="perfilCorreo"
-                                type="email" required></div>
-                        <div class="acciones-formulario"><button class="boton-verde" type="submit">Guardar
-                                cambios</button></div>
+                        <div class="campo completo"><label for="perfilNombre">Nombre completo</label>
+                            <input id="perfilNombre" type="text" required></div>
+                        <div class="campo"><label for="perfilTelefono">Teléfono</label>
+                            <input id="perfilTelefono" type="tel" required></div>
+                        <div class="campo"><label for="perfilCorreo">Correo electrónico</label>
+                            <input id="perfilCorreo" type="email" required></div>
+                        <div class="acciones-formulario"><button class="boton-verde" type="submit">Guardar cambios</button></div>
                     </form>
                     <p id="mensajePerfil" class="mensaje" role="status"></p>
                 </section>
             </div>
         </section>
     </main>
-    <footer class="pie-pagina">
+    <footer class="pie-pagina" id="contacto">
         <p>PetMatch CR — Plataforma de adopción responsable</p>
         <p>Un hogar cambia una vida. ♡</p>
     </footer>
 </body>
-
 </html>

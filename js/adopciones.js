@@ -1,8 +1,9 @@
-
-const CLAVE_SOLICITUDES = "petmatch_solicitudes";
-
-// Mascotas de ejemplo
-const mascotas = {
+/* PetMatch CR - Persona 3: solicitudes de demostración.
+   Utiliza formularios, arreglos, objetos, eventos y DOM de semanas 6 y 7.
+   Las solicitudes nuevas permanecen en la pantalla abierta;
+   para conservarlas ENTRE páginas será necesario implementar PHP (semana 8).
+*/
+const mascotasAdopcion = {
     luna: { nombre: "Luna", imagen: "../img/mascotas/luna/luna-1.jpg" },
     max: { nombre: "Max", imagen: "../img/mascotas/max/max-1.jpg" },
     canela: { nombre: "Canela", imagen: "../img/mascotas/canela/canela-1.jpg" },
@@ -10,347 +11,136 @@ const mascotas = {
     nala: { nombre: "Nala", imagen: "../img/mascotas/nala/nala-1.jpg" },
     toby: { nombre: "Toby", imagen: "../img/mascotas/toby/toby-1.jpg" }
 };
-
-const solicitudesIniciales = [
-    {
-        id: 1,
-        mascota: "luna",
-        nombre: "Carlos Ramirez",
-        correo: "carlos@ejemplo.com",
-        telefono: "8888-1234",
-        vivienda: "Casa propia",
-        experiencia: "He tenido perros anteriormente.",
-        motivo: "Quiero darle un hogar lleno de amor.",
-        fecha: "2026-11-01",
-        estado: "Pendiente"
-    },
-    {
-        id: 2,
-        mascota: "max",
-        nombre: "Maria Fernandez",
-        correo: "maria@ejemplo.com",
-        telefono: "8777-4321",
-        vivienda: "Apartamento",
-        experiencia: "Tengo experiencia con mascotas.",
-        motivo: "Busco un compañero para mi familia.",
-        fecha: "2026-11-03",
-        estado: "En revisión"
-    },
-    {
-        id: 3,
-        mascota: "canela",
-        nombre: "Carlos Ramirez",
-        correo: "carlos@ejemplo.com",
-        telefono: "8888-1234",
-        vivienda: "Casa propia",
-        experiencia: "He tenido perros anteriormente.",
-        motivo: "Quiero adoptar responsablemente.",
-        fecha: "2026-11-04",
-        estado: "Aprobada"
-    }
+const solicitudesEjemplo = [
+    { id: 1, mascota: "luna", nombre: "Carlos Ramírez", correo: "carlos@ejemplo.com", fecha: "2026-11-01", estado: "Pendiente" },
+    { id: 2, mascota: "max", nombre: "María Fernández", correo: "maria@ejemplo.com", fecha: "2026-11-03", estado: "En revisión" },
+    { id: 3, mascota: "canela", nombre: "Carlos Ramírez", correo: "carlos@ejemplo.com", fecha: "2026-11-04", estado: "Aprobada" }
 ];
 
-// Solicitudes
-function obtenerSolicitudes() {
-    const guardadas = localStorage.getItem(CLAVE_SOLICITUDES);
-
-    if (guardadas === null) {
-        localStorage.setItem(CLAVE_SOLICITUDES, JSON.stringify(solicitudesIniciales));
-        return solicitudesIniciales;
-    }
-
-    try {
-        const datos = JSON.parse(guardadas);
-        return Array.isArray(datos) ? datos : [];
-    } catch {
-        return [];
-    }
+function claseEstadoAdopcion(estado) {
+    if (estado === "En revisión") return "estado-revision";
+    if (estado === "Aprobada") return "estado-aprobada";
+    if (estado === "Rechazada") return "estado-rechazada";
+    return "estado-pendiente";
 }
 
-function guardarSolicitudes(solicitudes) {
-    localStorage.setItem(CLAVE_SOLICITUDES, JSON.stringify(solicitudes));
-}
-
-function claseEstado(estado) {
-    const clases = {
-        "Pendiente": "estado-pendiente",
-        "En revisión": "estado-revision",
-        "Aprobada": "estado-aprobada",
-        "Rechazada": "estado-rechazada"
-    };
-
-    return clases[estado] || "estado-pendiente";
-}
-
-function crearElemento(etiqueta, texto, clase = "") {
-    const elemento = document.createElement(etiqueta);
-    elemento.textContent = texto;
-
+function crearTextoAdopcion(tipo, contenido, clase) {
+    const elemento = document.createElement(tipo);
+    elemento.textContent = contenido;
     if (clase) elemento.className = clase;
-
     return elemento;
 }
 
-// Tarjetas de solicitudes
-function crearTarjeta(solicitud, tipo) {
-    const mascota = mascotas[solicitud.mascota];
-    const tarjeta = crearElemento("article", "", "adopciones-item");
-
-    const imagen = document.createElement("img");
-    imagen.src = mascota.imagen;
-    imagen.alt = mascota.nombre;
-
-    const info = crearElemento("div", "", "adopciones-info");
-
-    info.appendChild(crearElemento("h3", mascota.nombre));
-
-    info.appendChild(crearElemento(
-        "p", "Solicitante: " + solicitud.nombre
-    ));
-
-    info.appendChild(crearElemento(
-        "p", "Fecha: " + solicitud.fecha
-    ));
-
-    info.appendChild(crearElemento(
-        "span",
-        solicitud.estado,
-        "adopciones-estado " + claseEstado(solicitud.estado)
-    ));
-
-    const acciones = crearElemento("div", "", "adopciones-acciones");
-    const enlace = crearElemento(
-        "a", "Ver detalle", "adopciones-boton"
-    );
-
-    const vista = tipo === "recibidas" ? "rescatista" : "adoptante";
-
-    enlace.href = "detalle-solicitud.html?id=" + solicitud.id + "&vista=" + vista;
-
-    acciones.appendChild(enlace);
-    info.appendChild(acciones);
-
-    tarjeta.appendChild(imagen);
-    tarjeta.appendChild(info);
-
-    return tarjeta;
-}
-
-// Listados
-function mostrarListado(tipo) {
+// Lista de solicitudes de ejemplo para las páginas del módulo.
+function mostrarListaAdopcion(solicitudes) {
     const contenedor = document.getElementById("lista-solicitudes");
-
     if (!contenedor) return;
-
-    const solicitudes = obtenerSolicitudes();
-    contenedor.replaceChildren();
-
-    let filtradas = solicitudes;
-
-    if (tipo === "enviadas") {
-        const correo = document.getElementById("correo-busqueda").value.trim().toLowerCase();
-
-        if (correo === "") {
-            contenedor.appendChild(crearElemento(
-                "p",
-                "Escribe el correo que utilizaste al enviar la solicitud.",
-                "adopciones-vacio"
-            ));
-            return;
-        }
-
-        filtradas = solicitudes.filter(s => s.correo.toLowerCase() === correo);
+    contenedor.innerHTML = "";
+    if (solicitudes.length === 0) {
+        contenedor.append(crearTextoAdopcion("p", "No hay solicitudes de ejemplo con ese correo.", "adopciones-vacio"));
     }
-
-    if (filtradas.length === 0) {
-        contenedor.appendChild(crearElemento(
-            "p",
-            "No hay solicitudes para mostrar con ese correo.",
-            "adopciones-vacio"
-        ));
-        return;
-    }
-
-    filtradas.forEach(solicitud => {
-        contenedor.appendChild(crearTarjeta(solicitud, tipo));
+    solicitudes.forEach(function (solicitud) {
+        const mascota = mascotasAdopcion[solicitud.mascota];
+        const tarjeta = document.createElement("article");
+        tarjeta.className = "adopciones-item";
+        const imagen = document.createElement("img");
+        imagen.src = mascota.imagen;
+        imagen.alt = mascota.nombre;
+        const info = document.createElement("div");
+        info.className = "adopciones-info";
+        info.append(crearTextoAdopcion("h3", mascota.nombre));
+        info.append(crearTextoAdopcion("p", "Solicitante: " + solicitud.nombre));
+        info.append(crearTextoAdopcion("p", "Fecha: " + solicitud.fecha));
+        info.append(crearTextoAdopcion("span", solicitud.estado, "adopciones-estado " + claseEstadoAdopcion(solicitud.estado)));
+        const acciones = document.createElement("div");
+        acciones.className = "adopciones-acciones";
+        const enlace = crearTextoAdopcion("a", "Ver detalle", "adopciones-boton");
+        enlace.href = "detalle-solicitud.html#solicitud-" + solicitud.id;
+        acciones.append(enlace);
+        info.append(acciones);
+        tarjeta.append(imagen, info);
+        contenedor.append(tarjeta);
     });
 }
 
-// Formulario de adopción
-function registrarSolicitud(evento) {
-    evento.preventDefault();
+// Solicitudes enviadas durante esta visita a la pantalla.
+// Cada envío se añade a la lista visible sin borrar el anterior.
+const formularioAdopcion = document.getElementById("formulario-adopcion");
+if (formularioAdopcion) {
+    let solicitudesTemporales = [];
+    const resultado = document.getElementById("resultado-solicitud");
 
-    const formulario = evento.target;
-    const datos = new FormData(formulario);
-    const solicitudes = obtenerSolicitudes();
-
-    const nueva = {
-        id: Date.now(),
-        mascota: datos.get("mascota"),
-        nombre: datos.get("nombre").trim(),
-        correo: datos.get("correo").trim().toLowerCase(),
-        telefono: datos.get("telefono").trim(),
-        vivienda: datos.get("vivienda"),
-        experiencia: datos.get("experiencia").trim(),
-        motivo: datos.get("motivo").trim(),
-        fecha: new Date().toISOString().slice(0, 10),
-        estado: "Pendiente"
-    };
-
-    solicitudes.push(nueva);
-    guardarSolicitudes(solicitudes);
-
-    alert("¡Solicitud enviada correctamente!");
-
-    window.location.href = "detalle-solicitud.html?id=" + nueva.id + "&vista=adoptante";
-}
-
-// Detalle y estados
-function mostrarDetalle() {
-    const contenedor = document.getElementById("detalle-solicitud");
-
-    if (!contenedor) return;
-
-    const parametros = new URLSearchParams(window.location.search);
-    const id = Number(parametros.get("id"));
-    const esRescatista = parametros.get("vista") === "rescatista";
-
-    const enlaceVolver = document.getElementById("volver-solicitudes");
-    const mensaje = document.getElementById("mensaje-detalle");
-    const enlaceAdoptante = document.getElementById("enlace-adoptante");
-    const enlaceRescatista = document.getElementById("enlace-rescatista");
-
-    if (esRescatista) {
-        enlaceVolver.href = "solicitudes-recibidas.html";
-        enlaceRescatista.className = "activo";
-
-        mensaje.textContent =
-            "Vista de demostración del rescatista: puedes actualizar el estado de la solicitud.";
-    } else {
-        enlaceVolver.href = "mis-solicitudes.html";
-        enlaceAdoptante.className = "activo";
-
-        mensaje.textContent =
-            "Vista de demostración del adoptante: puedes consultar el estado de la solicitud.";
-    }
-
-    const solicitud = obtenerSolicitudes().find(s => s.id === id);
-
-    if (!solicitud) {
-        contenedor.textContent = "Solicitud no encontrada.";
-        return;
-    }
-
-    const mascota = mascotas[solicitud.mascota];
-
-    contenedor.replaceChildren();
-
-    contenedor.appendChild(crearElemento(
-        "h2", "Solicitud #" + solicitud.id
-    ));
-
-    const campos = [
-        ["Mascota", mascota.nombre],
-        ["Solicitante", solicitud.nombre],
-        ["Correo", solicitud.correo],
-        ["Teléfono", solicitud.telefono],
-        ["Tipo de vivienda", solicitud.vivienda],
-        ["Experiencia", solicitud.experiencia],
-        ["Motivo de adopción", solicitud.motivo],
-        ["Fecha", solicitud.fecha]
-    ];
-
-    campos.forEach(([titulo, valor]) => {
-        const parrafo = document.createElement("p");
-        const etiqueta = document.createElement("strong");
-
-        etiqueta.textContent = titulo + ": ";
-
-        parrafo.append(
-            etiqueta,
-            document.createTextNode(valor)
-        );
-
-        contenedor.appendChild(parrafo);
-    });
-
-    contenedor.appendChild(crearElemento(
-        "span",
-        solicitud.estado,
-        "adopciones-estado " + claseEstado(solicitud.estado)
-    ));
-
-    if (esRescatista) {
-        const acciones = crearElemento(
-            "div", "", "adopciones-acciones"
-        );
-
-        const estados = [
-            ["En revisión", "secundario"],
-            ["Aprobada", ""],
-            ["Rechazada", "peligro"]
-        ];
-
-        estados.forEach(([nuevoEstado, estilo]) => {
-            const boton = crearElemento(
-                "button",
-                nuevoEstado,
-                "adopciones-boton " + estilo
-            );
-
-            boton.type = "button";
-            boton.disabled = solicitud.estado === nuevoEstado;
-
-            boton.addEventListener("click", () => {
-                cambiarEstado(solicitud.id, nuevoEstado);
+    function mostrarSolicitudesTemporales() {
+        resultado.innerHTML = "";
+        resultado.append(crearTextoAdopcion("h2", "Solicitudes enviadas en esta demostración ♡"));
+        resultado.append(crearTextoAdopcion("p", "Los datos se mantienen solamente mientras permanezcas en esta página. Utiliza datos ficticios."));
+        solicitudesTemporales.forEach(function (solicitud, indice) {
+            const mascota = mascotasAdopcion[solicitud.mascota];
+            const ficha = document.createElement("article");
+            ficha.className = "adopciones-item";
+            const informacion = document.createElement("div");
+            informacion.className = "adopciones-info";
+            informacion.append(crearTextoAdopcion("h3", "Solicitud " + (indice + 1) + " — " + mascota.nombre));
+            const campos = [
+                "Nombre: " + solicitud.nombre,
+                "Correo: " + solicitud.correo,
+                "Teléfono: " + solicitud.telefono,
+                "Vivienda: " + solicitud.vivienda,
+                "Experiencia: " + solicitud.experiencia,
+                "Motivo: " + solicitud.motivo
+            ];
+            campos.forEach(function (dato) {
+                informacion.append(crearTextoAdopcion("p", dato));
             });
-
-            acciones.appendChild(boton);
+            informacion.append(crearTextoAdopcion("span", "Pendiente (demostración)", "adopciones-estado estado-pendiente"));
+            ficha.append(informacion);
+            resultado.append(ficha);
         });
-
-        contenedor.appendChild(acciones);
+        resultado.style.display = "block";
     }
+
+    formularioAdopcion.addEventListener("submit", function (evento) {
+        evento.preventDefault();
+        const datos = Object.fromEntries(new FormData(formularioAdopcion));
+        if (!mascotasAdopcion[datos.mascota]) return;
+        solicitudesTemporales.push(datos);
+        mostrarSolicitudesTemporales();
+        formularioAdopcion.reset();
+    });
 }
 
-function cambiarEstado(id, nuevoEstado) {
-    const solicitudes = obtenerSolicitudes();
-    const solicitud = solicitudes.find(s => s.id === id);
-
-    if (!solicitud) return;
-
-    solicitud.estado = nuevoEstado;
-
-    guardarSolicitudes(solicitudes);
-    mostrarDetalle();
+// Mis solicitudes: búsqueda por correo en los ejemplos de la página.
+const formularioBusqueda = document.getElementById("formulario-busqueda");
+if (formularioBusqueda) {
+    formularioBusqueda.addEventListener("submit", function (evento) {
+        evento.preventDefault();
+        const correo = document.getElementById("correo-busqueda").value.trim().toLowerCase();
+        const filtradas = solicitudesEjemplo.filter(function (solicitud) {
+            return solicitud.correo.toLowerCase() === correo;
+        });
+        mostrarListaAdopcion(filtradas);
+    });
+    document.getElementById("lista-solicitudes").append(
+        crearTextoAdopcion("p", "Escribe un correo ficticio para consultar solicitudes de demostración.", "adopciones-vacio")
+    );
+}
+// Panel rescatista: muestra únicamente solicitudes de ejemplo, sin permisos reales.
+if (document.getElementById("lista-solicitudes") && !formularioBusqueda) {
+    mostrarListaAdopcion(solicitudesEjemplo);
 }
 
-// Inicio de cada pantalla
-document.addEventListener("DOMContentLoaded", () => {
-    const formulario = document.getElementById("formulario-adopcion");
-
-    if (formulario) {
-        formulario.addEventListener("submit", registrarSolicitud);
-
-        const parametros = new URLSearchParams(window.location.search);
-        const mascota = parametros.get("mascota");
-
-        if (mascota && mascotas[mascota]) {
-            formulario.elements["mascota"].value = mascota;
-        }
-    }
-
-    const formularioBusqueda = document.getElementById("formulario-busqueda");
-
-    if (formularioBusqueda) {
-        formularioBusqueda.addEventListener("submit", (evento) => {
-            evento.preventDefault();
-            mostrarListado("enviadas");
+// Panel de detalle: botones para cambiar el estado visible en esta página.
+const accionesDetalle = document.querySelectorAll("#detalle-solicitud .adopciones-acciones");
+accionesDetalle.forEach(function (acciones, indice) {
+    const id = indice + 1;
+    const botones = acciones.querySelectorAll("button");
+    botones.forEach(function (boton) {
+        boton.addEventListener("click", function () {
+            const estado = document.getElementById("estado-" + id);
+            if (estado) {
+                estado.textContent = boton.textContent;
+                estado.className = "adopciones-estado " + claseEstadoAdopcion(boton.textContent);
+            }
         });
-    }
-
-    const pagina = document.body.dataset.pagina;
-
-    if (pagina === "enviadas") mostrarListado("enviadas");
-    if (pagina === "recibidas") mostrarListado("recibidas");
-    if (pagina === "detalle") mostrarDetalle();
+    });
 });

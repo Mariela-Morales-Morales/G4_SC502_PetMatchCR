@@ -1,60 +1,80 @@
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>PetMatch CR | Detalle de solicitud</title>
+
     <link rel="icon" href="../img/logos/05_Favicon_PetMatchCR.png">
     <link rel="stylesheet" href="../css/estilos.css">
     <link rel="stylesheet" href="../css/adopciones.css">
 </head>
+
 <body data-pagina="detalle">
 
     <!-- Encabezado -->
     <header class="encabezado">
         <nav class="navegacion">
-            <a href="../index.html" class="logo">
-                <img src="../img/logos/04_Logo_Blanco_Para_Fondo_Verde.png" alt="PetMatch CR">
-            </a>
-            <ul class="menu">
-                <li><a href="../index.html">Inicio</a></li>
-                <li><a href="../catalogo.html">Mascotas</a></li>
-                <li><a href="solicitar-adopcion.html" class="activo">Adoptar</a></li>
-                <li><a href="../index.html#adopcion">Sobre la adopción</a></li>
-                <li><a href="../index.html#contacto">Contacto</a></li>
-            </ul>
-            <span class="boton-ingresar">Ingresar</span>
-        </nav>
+    <a href="../index.html" class="logo"><img src="../img/logos/04_Logo_Blanco_Para_Fondo_Verde.png" alt="PetMatch CR"></a>
+    <ul class="menu">
+        <li><a href="../index.html" >Inicio</a></li>
+        <li><a href="../catalogo.html" >Mascotas</a></li>
+        <li><a href="../adopciones/solicitar-adopcion.html" class="activo">Adoptar</a></li>
+        <li><a href="../index.html#adopcion">Sobre la adopción</a></li>
+        <li><a href="../usuarios/perfil.html" >Mi perfil</a></li>
+        <li><a href="../index.html#contacto">Contacto</a></li>
+    </ul>
+    <a href="../usuarios/inicioSesion.html" class="boton-ingresar">Ingresar</a>
+</nav>
     </header>
 
     <main class="adopciones-contenedor">
 
         <!-- Presentación -->
-        <h1 class="adopciones-titulo">Detalle de solicitud ♡</h1>
+        <h1 class="adopciones-titulo">
+            Detalle de solicitud ♡
+        </h1>
+
         <p class="adopciones-descripcion">
-            Consulta la información de una solicitud y realiza su seguimiento.
+            Consulta la información de una solicitud de adopción
+            y realiza el seguimiento de su estado.
         </p>
 
         <!-- Navegación de adopciones -->
         <div class="adopciones-nav">
-            <a href="solicitar-adopcion.html">Solicitar adopción</a>
-            <a href="mis-solicitudes.html" id="enlace-adoptante">Mis solicitudes</a>
-            <a href="solicitudes-recibidas.html" id="enlace-rescatista">Panel rescatista</a>
+
+            <a href="solicitar-adopcion.html">
+                Solicitar adopción
+            </a>
+
+            <a href="mis-solicitudes.html">
+                Mis solicitudes
+            </a>
+
+            <a href="solicitudes-recibidas.html" class="activo">
+                Panel rescatista
+            </a>
+
         </div>
 
         <!-- Detalle de solicitud -->
-        <div class="adopciones-mensaje" id="mensaje-detalle">
-            Consulta la información y el estado de la solicitud de ejemplo.
+        <div class="adopciones-mensaje">
+            Esta es una vista de demostración del proceso de adopción.
+            Los botones cambian los estados visualmente en esta pantalla, sin guardar los cambios al salir.
         </div>
 
-        <section id="detalle-solicitud"
-                 class="adopciones-tarjeta adopciones-detalle"></section>
+        <section id="detalle-solicitud"><article class="adopciones-tarjeta adopciones-detalle" id="solicitud-1"><h2>Solicitud #1 — Luna</h2><p><strong>Solicitante:</strong> Carlos Ramírez</p><p><strong>Correo:</strong> carlos@ejemplo.com</p><p><strong>Teléfono:</strong> 8888-1234</p><p><strong>Vivienda:</strong> Casa propia</p><p><strong>Experiencia:</strong> He tenido perros anteriormente.</p><p><strong>Motivo:</strong> Quiero darle un hogar lleno de amor.</p><p><strong>Fecha:</strong> 2026-11-01</p><span class="adopciones-estado estado-pendiente" id="estado-1">Pendiente</span><div class="adopciones-acciones" data-solicitud="1"><button class="adopciones-boton secundario" type="button" data-estado="En revisión">En revisión</button><button class="adopciones-boton" type="button" data-estado="Aprobada">Aprobada</button><button class="adopciones-boton peligro" type="button" data-estado="Rechazada">Rechazada</button></div></article>
+<article class="adopciones-tarjeta adopciones-detalle" id="solicitud-2"><h2>Solicitud #2 — Max</h2><p><strong>Solicitante:</strong> María Fernández</p><p><strong>Correo:</strong> maria@ejemplo.com</p><p><strong>Teléfono:</strong> 8777-4321</p><p><strong>Vivienda:</strong> Apartamento</p><p><strong>Experiencia:</strong> Tengo experiencia con mascotas.</p><p><strong>Motivo:</strong> Busco un compañero para mi familia.</p><p><strong>Fecha:</strong> 2026-11-03</p><span class="adopciones-estado estado-revision" id="estado-2">En revisión</span><div class="adopciones-acciones" data-solicitud="2"><button class="adopciones-boton secundario" type="button" data-estado="En revisión">En revisión</button><button class="adopciones-boton" type="button" data-estado="Aprobada">Aprobada</button><button class="adopciones-boton peligro" type="button" data-estado="Rechazada">Rechazada</button></div></article>
+<article class="adopciones-tarjeta adopciones-detalle" id="solicitud-3"><h2>Solicitud #3 — Canela</h2><p><strong>Solicitante:</strong> Carlos Ramírez</p><p><strong>Correo:</strong> carlos@ejemplo.com</p><p><strong>Teléfono:</strong> 8888-1234</p><p><strong>Vivienda:</strong> Casa propia</p><p><strong>Experiencia:</strong> He tenido perros anteriormente.</p><p><strong>Motivo:</strong> Quiero adoptar responsablemente.</p><p><strong>Fecha:</strong> 2026-11-04</p><span class="adopciones-estado estado-aprobada" id="estado-3">Aprobada</span><div class="adopciones-acciones" data-solicitud="3"><button class="adopciones-boton secundario" type="button" data-estado="En revisión">En revisión</button><button class="adopciones-boton" type="button" data-estado="Aprobada">Aprobada</button><button class="adopciones-boton peligro" type="button" data-estado="Rechazada">Rechazada</button></div></article></section>
 
-        <a href="mis-solicitudes.html" id="volver-solicitudes"
+        <a href="solicitudes-recibidas.html"
            class="adopciones-boton secundario">
             Volver a solicitudes
         </a>
+
     </main>
 
     <!-- Pie de página -->
@@ -64,5 +84,6 @@
     </footer>
 
     <script src="../js/adopciones.js"></script>
+
 </body>
 </html>

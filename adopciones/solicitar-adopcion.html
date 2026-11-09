@@ -18,37 +18,17 @@
     <!-- Encabezado -->
     <header class="encabezado">
         <nav class="navegacion">
-
-            <a href="../index.html" class="logo">
-                <img src="../img/logos/04_Logo_Blanco_Para_Fondo_Verde.png"
-                     alt="PetMatch CR">
-            </a>
-
-            <ul class="menu">
-                <li>
-                    <a href="../index.html">Inicio</a>
-                </li>
-
-                <li>
-                    <a href="../catalogo.html">Mascotas</a>
-                </li>
-
-                <li>
-                    <a href="solicitar-adopcion.html" class="activo">Adoptar</a>
-                </li>
-
-                <li>
-                    <a href="../index.html#adopcion">Sobre la adopción</a>
-                </li>
-
-                <li>
-                    <a href="../index.html#contacto">Contacto</a>
-                </li>
-            </ul>
-
-            <span class="boton-ingresar">Ingresar</span>
-
-        </nav>
+    <a href="../index.html" class="logo"><img src="../img/logos/04_Logo_Blanco_Para_Fondo_Verde.png" alt="PetMatch CR"></a>
+    <ul class="menu">
+        <li><a href="../index.html" >Inicio</a></li>
+        <li><a href="../catalogo.html" >Mascotas</a></li>
+        <li><a href="../adopciones/solicitar-adopcion.html" class="activo">Adoptar</a></li>
+        <li><a href="../index.html#adopcion">Sobre la adopción</a></li>
+        <li><a href="../usuarios/perfil.html" >Mi perfil</a></li>
+        <li><a href="../index.html#contacto">Contacto</a></li>
+    </ul>
+    <a href="../usuarios/inicioSesion.html" class="boton-ingresar">Ingresar</a>
+</nav>
     </header>
 
     <main class="adopciones-contenedor">
@@ -179,12 +159,12 @@
                     </button>
                 </div>
 
-            </form>
+            </form><div id="resultado-solicitud" class="adopciones-tarjeta" style="display:none" role="status"></div>
 
         </section>
 
         <div class="adopciones-mensaje">
-            Esta es una versión de demostración de PetMatch CR.
+            Demostración de frontend: al enviar se verá la confirmación aquí mismo, pero la solicitud no se guardará entre páginas.
             Utiliza información ficticia para realizar las pruebas.
         </div>
 

@@ -1,72 +1,83 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>PetMatch CR | Mis solicitudes</title>
+
     <link rel="icon" href="../img/logos/05_Favicon_PetMatchCR.png">
     <link rel="stylesheet" href="../css/estilos.css">
     <link rel="stylesheet" href="../css/adopciones.css">
 </head>
+
 <body data-pagina="enviadas">
 
     <!-- Encabezado -->
     <header class="encabezado">
         <nav class="navegacion">
-            <a href="../index.html" class="logo">
-                <img src="../img/logos/04_Logo_Blanco_Para_Fondo_Verde.png" alt="PetMatch CR">
-            </a>
-            <ul class="menu">
-                <li><a href="../index.html">Inicio</a></li>
-                <li><a href="../catalogo.html">Mascotas</a></li>
-                <li><a href="solicitar-adopcion.html" class="activo">Adoptar</a></li>
-                <li><a href="../index.html#adopcion">Sobre la adopción</a></li>
-                <li><a href="../index.html#contacto">Contacto</a></li>
-            </ul>
-            <span class="boton-ingresar">Ingresar</span>
-        </nav>
+    <a href="../index.html" class="logo"><img src="../img/logos/04_Logo_Blanco_Para_Fondo_Verde.png" alt="PetMatch CR"></a>
+    <ul class="menu">
+        <li><a href="../index.html" >Inicio</a></li>
+        <li><a href="../catalogo.html" >Mascotas</a></li>
+        <li><a href="../adopciones/solicitar-adopcion.html" class="activo">Adoptar</a></li>
+        <li><a href="../index.html#adopcion">Sobre la adopción</a></li>
+        <li><a href="../usuarios/perfil.html" >Mi perfil</a></li>
+        <li><a href="../index.html#contacto">Contacto</a></li>
+    </ul>
+    <a href="../usuarios/inicioSesion.html" class="boton-ingresar">Ingresar</a>
+</nav>
     </header>
 
     <main class="adopciones-contenedor">
 
         <!-- Presentación -->
-        <h1 class="adopciones-titulo">Mis solicitudes ♡</h1>
+        <h1 class="adopciones-titulo">
+            Mis solicitudes ♡
+        </h1>
+
         <p class="adopciones-descripcion">
-            Consulta el estado de las solicitudes de adopción que has enviado.
+            Consulta el estado de las solicitudes de adopción
+            que has enviado y conoce cómo avanza cada proceso.
         </p>
 
         <!-- Navegación de adopciones -->
         <div class="adopciones-nav">
-            <a href="solicitar-adopcion.html">Solicitar adopción</a>
-            <a href="mis-solicitudes.html" class="activo">Mis solicitudes</a>
-            <a href="solicitudes-recibidas.html">Panel rescatista</a>
+
+            <a href="solicitar-adopcion.html">
+                Solicitar adopción
+            </a>
+
+            <a href="mis-solicitudes.html" class="activo">
+                Mis solicitudes
+            </a>
+
+            <a href="solicitudes-recibidas.html">
+                Panel rescatista
+            </a>
+
         </div>
 
-        <!-- Búsqueda de solicitudes -->
         <div class="adopciones-mensaje">
-            Esta es una demostración: escribe el correo que utilizaste en tu solicitud.
-            Para probar puedes usar carlos@ejemplo.com o maria@ejemplo.com.
-            No utilices datos personales reales.
+            Solicitudes de demostración: utiliza carlos@ejemplo.com o maria@ejemplo.com.
+            No ingreses datos personales reales.
         </div>
-
         <section class="adopciones-tarjeta">
-            <h2>Consultar solicitudes enviadas</h2>
+            <h2>Buscar mis solicitudes</h2>
             <form id="formulario-busqueda" class="adopciones-formulario">
                 <div class="adopciones-campo completo">
                     <label for="correo-busqueda">Correo electrónico</label>
-                    <input type="email" id="correo-busqueda" name="correo-busqueda"
-                           placeholder="ejemplo@correo.com" required>
+                    <input id="correo-busqueda" name="correo-busqueda" type="email" placeholder="carlos@ejemplo.com" required>
                 </div>
                 <div class="adopciones-campo completo">
-                    <button type="submit" class="adopciones-boton">
-                        Buscar solicitudes
-                    </button>
+                    <button type="submit" class="adopciones-boton">Buscar solicitudes</button>
                 </div>
             </form>
         </section>
+        <section id="lista-solicitudes" class="adopciones-lista">
+        </section>
 
-        <!-- Resultados -->
-        <section id="lista-solicitudes" class="adopciones-lista"></section>
     </main>
 
     <!-- Pie de página -->
@@ -76,5 +87,6 @@
     </footer>
 
     <script src="../js/adopciones.js"></script>
+
 </body>
 </html>

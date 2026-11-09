@@ -9,6 +9,50 @@
 
     <link rel="icon" href="img/logos/05_Favicon_PetMatchCR.png">
     <link rel="stylesheet" href="css/estilos.css">
+
+    <!-- Estilos exclusivos de las secciones informativas de Inicio. -->
+    <style>
+        .titulo-informativo {
+            color: #2F5D50;
+            font-size: 36px;
+            line-height: 1.25;
+            margin-bottom: 16px;
+        }
+
+        .texto-informativo {
+            max-width: 800px;
+            margin: 0 auto;
+            color: #555555;
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        .informacion .tarjeta h3 {
+            color: #2F5D50;
+            font-size: 22px;
+            margin-bottom: 14px;
+        }
+
+        .informacion .tarjeta a {
+            margin-top: 20px;
+        }
+
+        .informacion .tarjeta .nota-contacto {
+            margin-top: 16px;
+            font-size: 14px;
+            color: #6B4F3A;
+        }
+
+        @media (max-width: 600px) {
+            .titulo-informativo {
+                font-size: 28px;
+            }
+
+            .texto-informativo {
+                font-size: 15px;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -16,43 +60,17 @@
     <!-- Encabezado -->
     <header class="encabezado">
         <nav class="navegacion">
-
-            <a href="index.html" class="logo">
-                <img src="img/logos/04_Logo_Blanco_Para_Fondo_Verde.png"
-                     alt="PetMatch CR">
-            </a>
-
-            <ul class="menu">
-                <li>
-                    <a href="index.html" class="activo">Inicio</a>
-                </li>
-
-                <li>
-                    <a href="catalogo.html">Mascotas</a>
-                </li>
-                <li>
-                    <a href="adopciones/solicitar-adopcion.html">
-                        Adoptar
-                    </a>
-                </li>
-                <li>
-                    <a href="#adopcion">Sobre la adopción</a>
-                </li>
-
-                <li><a href="../G4_SC502_PetMatchCR/mascota/publicaciones.html">Mis publicaciones</a></li>
-
-                <li><a href="../G4_SC502_PetMatchCR/usuarios/perfil.html">Mi perfil</a></li>
-
-                <li>
-                    <a href="#contacto">Contacto</a>
-                </li>
-
-                
-            </ul>
-
-            <span class="boton-ingresar"> <a href="../G4_SC502_PetMatchCR/usuarios/inicioSesion.html"> Ingresar </a> </span>
-
-        </nav>
+    <a href="index.html" class="logo"><img src="img/logos/04_Logo_Blanco_Para_Fondo_Verde.png" alt="PetMatch CR"></a>
+    <ul class="menu">
+        <li><a href="index.html" class="activo">Inicio</a></li>
+        <li><a href="catalogo.html" >Mascotas</a></li>
+        <li><a href="adopciones/solicitar-adopcion.html" >Adoptar</a></li>
+        <li><a href="index.html#adopcion">Sobre la adopción</a></li>
+        <li><a href="usuarios/perfil.html" >Mi perfil</a></li>
+        <li><a href="index.html#contacto">Contacto</a></li>
+    </ul>
+    <a href="usuarios/inicioSesion.html" class="boton-ingresar">Ingresar</a>
+</nav>
     </header>
 
     <main>
@@ -82,7 +100,7 @@
                         Ver mascotas
                     </a>
 
-                    <a href="#adopcion" class="boton-secundario">
+                    <a href="#nosotros" class="boton-secundario">
                         Conoce PetMatch
                     </a>
 
@@ -96,7 +114,7 @@
         </section>
 
         <!-- Tarjetas informativas -->
-        <section class="informacion" id="adopcion">
+        <section class="informacion">
 
             <article class="tarjeta">
 
@@ -146,10 +164,108 @@
 
         </section>
 
+
+        <!-- Conoce PetMatch: destino del botón de la portada -->
+        <section class="presentacion-catalogo" id="nosotros">
+            <span class="etiqueta-catalogo">¿Quiénes somos?</span>
+            <h2 class="titulo-informativo">Conoce PetMatch CR ♡</h2>
+            <p class="texto-informativo">
+                PetMatch CR es un proyecto académico creado para mostrar cómo
+                una página web puede ayudar a dar visibilidad a mascotas que
+                buscan un hogar. Nuestro propósito es reunir información clara
+                sobre cada mascota y promover decisiones de adopción responsables.
+            </p>
+        </section>
+
+        <!-- Información de adopción: destino del menú superior -->
+        <section class="presentacion-catalogo" id="adopcion">
+            <span class="etiqueta-catalogo">Un compromiso para toda la vida</span>
+            <h2 class="titulo-informativo">Sobre la adopción responsable</h2>
+            <p class="texto-informativo">
+                Adoptar implica ofrecer tiempo, alimentación, atención veterinaria,
+                cariño y un espacio seguro. Antes de elegir una mascota, es importante
+                considerar sus necesidades, la convivencia familiar y el compromiso
+                de cuidarla durante toda su vida.
+            </p>
+        </section>
+
+        <section class="informacion">
+            <article class="tarjeta">
+                <h3>1. Conoce a las mascotas</h3>
+                <p>
+                    Revisa sus fotografías, características, edad, tamaño
+                    e información disponible antes de decidir.
+                </p>
+                <a href="catalogo.html" class="boton-principal">Explorar catálogo</a>
+            </article>
+
+            <article class="tarjeta">
+                <h3>2. Prepárate para adoptar</h3>
+                <p>
+                    Piensa en el tiempo, los cuidados y los recursos que
+                    necesitará tu nuevo compañero.
+                </p>
+            </article>
+
+            <article class="tarjeta">
+                <h3>3. Conoce el proceso</h3>
+                <p>
+                    Consulta el formulario de demostración y conoce cómo
+                    se representan las solicitudes y sus estados.
+                </p>
+                <a href="adopciones/solicitar-adopcion.html" class="boton-principal">
+                    Ver formulario
+                </a>
+            </article>
+        </section>
+
+        <!-- Contacto: destino del menú superior -->
+        <section class="presentacion-catalogo" id="contacto">
+            <span class="etiqueta-catalogo">Estamos construyendo PetMatch CR</span>
+            <h2 class="titulo-informativo">Contacto y comunidad ♡</h2>
+            <p class="texto-informativo">
+                Por ahora, PetMatch CR es un prototipo universitario. Todavía
+                no tenemos un correo, teléfono, Facebook o Instagram oficiales
+                confirmados para publicar aquí. Esos datos se agregarán cuando
+                el equipo defina sus canales de contacto.
+            </p>
+        </section>
+
+        <section class="informacion">
+            <article class="tarjeta">
+                <h3>Conoce nuestras mascotas</h3>
+                <p>
+                    Explora las mascotas de ejemplo y descubre las
+                    características de cada una.
+                </p>
+                <a href="catalogo.html" class="boton-principal">Ver mascotas</a>
+            </article>
+
+            <article class="tarjeta">
+                <h3>Participa en PetMatch</h3>
+                <p>
+                    Consulta las pantallas de registro de usuarios y
+                    publicación de mascotas de nuestro prototipo.
+                </p>
+                <a href="usuarios/registroUsuarios.html" class="boton-principal">
+                    Crear cuenta de prueba
+                </a>
+            </article>
+
+            <article class="tarjeta">
+                <h3>Canales oficiales</h3>
+                <p>Correo, teléfono, Facebook e Instagram: por confirmar.</p>
+                <p class="nota-contacto">
+                    Este sitio no procesa adopciones reales. Usa información ficticia
+                    en los formularios de prueba.
+                </p>
+            </article>
+        </section>
+
     </main>
 
     <!-- Pie de página -->
-    <footer class="pie-pagina" id="contacto">
+    <footer class="pie-pagina">
 
         <p>
             PetMatch CR — Plataforma de adopción responsable

@@ -1,176 +1,291 @@
-
-const leer = (clave, defecto) => {
-    try { return JSON.parse(localStorage.getItem(clave)) ?? defecto; }
-    catch { return defecto; }
-};
-const guardar = (clave, valor) => localStorage.setItem(clave, JSON.stringify(valor));
-const mostrar = (id, texto) => {
+/* PetMatch CR - Persona 2. Demostraciones de frontend (semanas 6 y 7). */
+/* Los formularios no almacenan cuentas ni publicaciones entre páginas. */
+function mensajeUsuario(id, texto) {
     const elemento = document.getElementById(id);
-    if (elemento) { elemento.textContent = texto; elemento.style.display = "block"; }
-};
-const usuarioActual = () => leer("petmatch_usuario", null);
+    if (elemento) {
+        elemento.textContent = texto;
+        elemento.style.display = "block";
+    }
+}
 
-// Registro de usuarios
+// Validación del registro: no se guarda ninguna contraseña.
 const formRegistro = document.getElementById("formRegistro");
 if (formRegistro) {
-    formRegistro.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const nombre = document.getElementById("nombre").value.trim();
-        const telefono = document.getElementById("telefono").value.trim();
-        const correo = document.getElementById("correo").value.trim().toLowerCase();
+    formRegistro.addEventListener("submit", function (evento) {
+        evento.preventDefault();
+        const nombre = document.getElementById("nombre").value;
         const clave = document.getElementById("contrasena").value;
         const confirmar = document.getElementById("confirmar").value;
-        if (clave !== confirmar) return mostrar("mensajeRegistro", "Las contraseñas no coinciden.");
-        const usuarios = leer("petmatch_usuarios", []);
-        if (usuarios.some(u => u.correo === correo)) return mostrar("mensajeRegistro", "Ya existe una cuenta con ese correo.");
-        const usuario = { nombre, telefono, correo, clave };
-        usuarios.push(usuario); guardar("petmatch_usuarios", usuarios);
-        guardar("petmatch_usuario", usuario);
-        mostrar("mensajeRegistro", "¡Cuenta creada correctamente! Ya puedes ingresar a tu perfil.");
-        setTimeout(() => location.href = "perfil.html", 900);
+        if (clave !== confirmar) {
+            mensajeUsuario("mensajeRegistro", "Las contraseñas no coinciden.");
+        } else {
+            mensajeUsuario("mensajeRegistro", "Formulario de " + nombre + " validado correctamente. Demostración: la cuenta no se guarda todavía.");
+        }
     });
 }
 
-// Inicio de sesión
+// Acceso de prueba, exclusivamente con datos ficticios.
 const formLogin = document.getElementById("formLogin");
 if (formLogin) {
-    formLogin.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const correo = document.getElementById("correoLogin").value.trim().toLowerCase();
+    formLogin.addEventListener("submit", function (evento) {
+        evento.preventDefault();
+        const correo = document.getElementById("correoLogin").value.toLowerCase();
         const clave = document.getElementById("claveLogin").value;
-        const usuario = leer("petmatch_usuarios", []).find(u => u.correo === correo && u.clave === clave);
-        if (!usuario) return mostrar("mensajeLogin", "Correo o contraseña incorrectos. Verifica tus datos.");
-        guardar("petmatch_usuario", usuario);
-        mostrar("mensajeLogin", "Inicio de sesión correcto. ¡Bienvenido!");
-        setTimeout(() => location.href = "perfil.html", 700);
+        if (correo === "demo@petmatch.cr" && clave === "Demo123") {
+            mensajeUsuario("mensajeLogin", "Acceso de demostración correcto. Abre «Mi perfil» en el menú superior. No se ha creado una sesión real.");
+        } else {
+            mensajeUsuario("mensajeLogin", "Datos de demostración incorrectos. Utiliza demo@petmatch.cr y Demo123.");
+        }
     });
 }
 
-// Perfil
+// Perfil de muestra: edición visible solo en esta página.
 const formPerfil = document.getElementById("formPerfil");
 if (formPerfil) {
-    const usuario = usuarioActual();
-    if (usuario) {
-        document.getElementById("perfilNombre").value = usuario.nombre || "";
-        document.getElementById("perfilTelefono").value = usuario.telefono || "";
-        document.getElementById("perfilCorreo").value = usuario.correo || "";
-        document.getElementById("nombrePerfil").textContent = usuario.nombre || "Usuario";
-        document.getElementById("correoPerfil").textContent = usuario.correo || "";
-        document.getElementById("inicialPerfil").textContent = (usuario.nombre || "U").charAt(0).toUpperCase();
-    } else {
-        mostrar("mensajePerfil", "Inicia sesión o crea una cuenta para editar tu perfil.");
-        formPerfil.querySelectorAll("input, button").forEach(el => el.disabled = true);
-    }
-    formPerfil.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const actual = usuarioActual();
-        if (!actual) return;
-        const actualizado = {
-            ...actual,
-            nombre: document.getElementById("perfilNombre").value.trim(),
-            telefono: document.getElementById("perfilTelefono").value.trim(),
-            correo: document.getElementById("perfilCorreo").value.trim().toLowerCase()
-        };
-        const usuarios = leer("petmatch_usuarios", []);
-        const indice = usuarios.findIndex(u => u.correo === actual.correo);
-        if (indice >= 0) usuarios[indice] = actualizado;
-        guardar("petmatch_usuarios", usuarios); guardar("petmatch_usuario", actualizado);
-        document.getElementById("nombrePerfil").textContent = actualizado.nombre;
-        document.getElementById("correoPerfil").textContent = actualizado.correo;
-        document.getElementById("inicialPerfil").textContent = actualizado.nombre.charAt(0).toUpperCase();
-        mostrar("mensajePerfil", "Tus datos se actualizaron correctamente.");
+    const nombre = document.getElementById("perfilNombre");
+    const telefono = document.getElementById("perfilTelefono");
+    const correo = document.getElementById("perfilCorreo");
+    nombre.value = "Usuario de demostración";
+    telefono.value = "8888-0000";
+    correo.value = "demo@petmatch.cr";
+    document.getElementById("nombrePerfil").textContent = nombre.value;
+    document.getElementById("correoPerfil").textContent = correo.value;
+    document.getElementById("inicialPerfil").textContent = "U";
+    formPerfil.addEventListener("submit", function (evento) {
+        evento.preventDefault();
+        document.getElementById("nombrePerfil").textContent = nombre.value;
+        document.getElementById("correoPerfil").textContent = correo.value;
+        document.getElementById("inicialPerfil").textContent = "U";
+        mensajeUsuario("mensajePerfil", "Datos actualizados en la vista de demostración. Al abrir de nuevo esta página se restablecerán.");
     });
 }
-const cerrarSesion = document.getElementById("cerrarSesion");
-if (cerrarSesion) cerrarSesion.addEventListener("click", () => localStorage.removeItem("petmatch_usuario"));
 
-// Formulario de registrar mascotas
+// Registro y edición temporal de mascotas (solo mientras esta página permanezca abierta).
+// Se usan arreglos, objetos, eventos y manipulación del DOM de las semanas 6 y 7.
 const formMascota = document.getElementById("formMascota");
 if (formMascota) {
-    formMascota.addEventListener("submit", async (e) => {
-        e.preventDefault();
-        const usuario = usuarioActual();
-        if (!usuario) return mostrar("mensajeMascota", "Primero debes iniciar sesión para publicar una mascota.");
-        const archivo = document.getElementById("fotoMascota").files[0];
-        let foto = "";
-        if (archivo) {
-            if (archivo.size > 700000) return mostrar("mensajeMascota", "La imagen debe pesar menos de 700 KB para este prototipo.");
-            foto = await new Promise(resolve => {
-                const lector = new FileReader();
-                lector.onload = () => resolve(lector.result);
-                lector.readAsDataURL(archivo);
-            });
-        }
-        const mascotas = leer("petmatch_mascotas", []);
-        mascotas.push({
-            id: Date.now(), propietario: usuario.correo,
-            nombre: document.getElementById("mascotaNombre").value.trim(),
-            especie: document.getElementById("especieMascota").value,
-            raza: document.getElementById("razaMascota").value.trim() || "No especificada",
-            edad: document.getElementById("edadMascota").value.trim(),
-            tamano: document.getElementById("tamanoMascota").value,
-            sexo: document.getElementById("sexoMascota")?.value || "",
-            ubicacion: document.getElementById("ubicacionMascota").value,
-            estado: document.getElementById("estadoMascota").value,
-            vacunas: document.getElementById("vacunasMascota")?.value || "",
-            esterilizada: document.getElementById("esterilizadaMascota")?.value || "",
-            descripcion: document.getElementById("descripcionMascota").value.trim(),
-            foto
-        });
-        guardar("petmatch_mascotas", mascotas);
-        mostrar("mensajeMascota", "¡Mascota publicada! Ya aparece en Mis publicaciones.");
-        formMascota.reset();
-        setTimeout(() => location.href = "mis-publicaciones.html", 900);
-    });
-}
+    let mascotasTemporales = [];
+    let mascotaEnEdicion = -1;
+    const contenedor = document.getElementById("vista-publicacion");
+    const botonPublicar = formMascota.querySelector('button[type="submit"]');
 
-// Listado y administración de publicaciones
-const lista = document.getElementById("listaPublicaciones");
-if (lista) {
-    const usuario = usuarioActual();
-    const todas = leer("petmatch_mascotas", []);
-    const propias = usuario ? todas.filter(m => m.propietario === usuario.correo) : [];
-    const vacio = document.getElementById("mensajePublicaciones");
-    if (!propias.length) {
-        vacio.style.display = "block";
-        if (!usuario) vacio.textContent = "Inicia sesión para consultar tus publicaciones.";
-    } else {
-        propias.forEach(m => {
+    function mostrarMascotasTemporales() {
+        contenedor.innerHTML = "";
+
+        const titulo = document.createElement("h2");
+        titulo.textContent = "Mis mascotas registradas en esta página";
+        titulo.style.margin = "24px 0 15px";
+        titulo.style.color = "#2F5D50";
+        contenedor.append(titulo);
+
+        if (mascotasTemporales.length === 0) {
+            const aviso = document.createElement("p");
+            aviso.textContent = "Todavía no has registrado mascotas en esta demostración.";
+            contenedor.append(aviso);
+        }
+
+        const cuadricula = document.createElement("div");
+        cuadricula.className = "cuadricula-publicaciones";
+
+        mascotasTemporales.forEach(function (mascota, indice) {
             const tarjeta = document.createElement("article");
             tarjeta.className = "tarjeta-publicacion";
-            const foto = m.foto ? `<img src="${m.foto}" alt="Fotografía de ${m.nombre}">` : "♡";
-            tarjeta.innerHTML = `
-                <div class="imagen-publicacion">${foto}</div>
-                <div class="info-publicacion">
-                    <span class="estado-publicacion">${m.estado}</span>
-                    <h3>${escapar(m.nombre)}</h3>
-                    <p>${escapar(m.especie)} · ${escapar(m.raza)}<br>${escapar(m.edad)} · ${escapar(m.tamano)}<br>${escapar(m.ubicacion)}</p>
-                    <div class="botones-publicacion">
-                        <button class="boton-borde" data-editar="${m.id}" type="button">Editar</button>
-                        <button class="boton-cafe" data-eliminar="${m.id}" type="button">Eliminar</button>
-                    </div>
-                </div>`;
-            lista.appendChild(tarjeta);
+
+            const informacion = document.createElement("div");
+            informacion.className = "info-publicacion";
+
+            const nombre = document.createElement("h3");
+            nombre.textContent = mascota.nombre;
+            informacion.append(nombre);
+
+            const caracteristicas = [
+                "Especie: " + mascota.especie,
+                "Raza: " + mascota.raza,
+                "Edad: " + mascota.edad,
+                "Sexo: " + mascota.sexo,
+                "Tamaño: " + mascota.tamano,
+                "Provincia: " + mascota.ubicacion,
+                "Vacunas: " + mascota.vacunas,
+                "Esterilización: " + mascota.esterilizada,
+                "Descripción: " + mascota.descripcion
+            ];
+
+            caracteristicas.forEach(function (detalle) {
+                const texto = document.createElement("p");
+                texto.textContent = detalle;
+                informacion.append(texto);
+            });
+
+            const estado = document.createElement("span");
+            estado.className = "estado-publicacion";
+            estado.textContent = mascota.estado;
+            informacion.append(estado);
+
+            const acciones = document.createElement("div");
+            acciones.className = "botones-publicacion";
+
+            const editar = document.createElement("button");
+            editar.type = "button";
+            editar.className = "boton-borde";
+            editar.textContent = "Editar";
+            editar.addEventListener("click", function () {
+                mascotaEnEdicion = indice;
+                document.getElementById("mascotaNombre").value = mascota.nombre;
+                document.getElementById("especieMascota").value = mascota.especie;
+                document.getElementById("razaMascota").value = mascota.raza;
+                document.getElementById("edadMascota").value = mascota.edad;
+                document.getElementById("sexoMascota").value = mascota.sexo;
+                document.getElementById("tamanoMascota").value = mascota.tamano;
+                document.getElementById("ubicacionMascota").value = mascota.ubicacion;
+                document.getElementById("estadoMascota").value = mascota.estado;
+                document.getElementById("vacunasMascota").value = mascota.vacunas;
+                document.getElementById("esterilizadaMascota").value = mascota.esterilizada;
+                document.getElementById("descripcionMascota").value = mascota.descripcion;
+                botonPublicar.textContent = "Guardar cambios";
+                mensajeUsuario("mensajeMascota", "Modifica los datos del formulario y presiona Guardar cambios.");
+            });
+
+            const retirar = document.createElement("button");
+            retirar.type = "button";
+            retirar.className = "boton-cafe";
+            retirar.textContent = "Retirar";
+            retirar.addEventListener("click", function () {
+                if (!confirm("¿Retirar a " + mascota.nombre + " de la demostración?")) return;
+                mascotasTemporales = mascotasTemporales.filter(function (registro, posicion) {
+                    return posicion !== indice;
+                });
+                mascotaEnEdicion = -1;
+                formMascota.reset();
+                botonPublicar.textContent = "Publicar mascota";
+                mostrarMascotasTemporales();
+                mensajeUsuario("mensajeMascota", "Mascota retirada de la lista temporal.");
+            });
+
+            acciones.append(editar, retirar);
+            informacion.append(acciones);
+            tarjeta.append(informacion);
+            cuadricula.append(tarjeta);
+        });
+        contenedor.append(cuadricula);
+    }
+
+    formMascota.addEventListener("submit", function (evento) {
+        evento.preventDefault();
+
+        const mascota = {
+            nombre: document.getElementById("mascotaNombre").value.trim(),
+            especie: document.getElementById("especieMascota").value,
+            raza: document.getElementById("razaMascota").value.trim(),
+            edad: document.getElementById("edadMascota").value.trim(),
+            sexo: document.getElementById("sexoMascota").value,
+            tamano: document.getElementById("tamanoMascota").value,
+            ubicacion: document.getElementById("ubicacionMascota").value,
+            estado: document.getElementById("estadoMascota").value,
+            vacunas: document.getElementById("vacunasMascota").value,
+            esterilizada: document.getElementById("esterilizadaMascota").value,
+            descripcion: document.getElementById("descripcionMascota").value.trim()
+        };
+
+        if (mascotaEnEdicion >= 0) {
+            mascotasTemporales[mascotaEnEdicion] = mascota;
+            mensajeUsuario("mensajeMascota", "Cambios aplicados a la mascota de demostración.");
+        } else {
+            mascotasTemporales.push(mascota);
+            mensajeUsuario("mensajeMascota", "Mascota agregada a la lista temporal de esta página.");
+        }
+
+        mascotaEnEdicion = -1;
+        formMascota.reset();
+        botonPublicar.textContent = "Publicar mascota";
+        mostrarMascotasTemporales();
+    });
+
+    // Mantener la lista temporal visible: al limpiar no abandonamos esta página.
+    const enlaceCancelar = formMascota.querySelector(".acciones-formulario a.boton-borde");
+    if (enlaceCancelar) {
+        enlaceCancelar.textContent = "Limpiar formulario";
+        enlaceCancelar.addEventListener("click", function (evento) {
+            evento.preventDefault();
+            formMascota.reset();
+            mascotaEnEdicion = -1;
+            botonPublicar.textContent = "Publicar mascota";
+            mensajeUsuario("mensajeMascota", "Formulario limpio. Las mascotas de esta demostración siguen en la lista de abajo.");
         });
     }
-    lista.addEventListener("click", (e) => {
-        const idEditar = e.target.dataset.editar;
-        const idEliminar = e.target.dataset.eliminar;
-        if (idEliminar) {
-            if (confirm("¿Deseas eliminar esta publicación?")) {
-                guardar("petmatch_mascotas", todas.filter(m => m.id !== Number(idEliminar)));
-                location.reload();
-            }
-        }
-        if (idEditar) {
-            const mascota = todas.find(m => m.id === Number(idEditar));
-            const nuevoEstado = prompt("Actualiza el estado (Disponible / En proceso):", mascota.estado);
-            if (nuevoEstado && ["Disponible", "En proceso"].includes(nuevoEstado)) {
-                mascota.estado = nuevoEstado; guardar("petmatch_mascotas", todas); location.reload();
-            } else if (nuevoEstado) alert("Escribe Disponible o En proceso.");
-        }
-    });
+    mostrarMascotasTemporales();
 }
-function escapar(valor) {
-    return String(valor).replace(/[&<>"']/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c]));
+
+// Mis publicaciones: muestra registros ficticios y permite editarlos o retirarlos temporalmente.
+const listaPublicaciones = document.getElementById("listaPublicaciones");
+if (listaPublicaciones) {
+    let publicacionesEjemplo = [
+        { nombre: "Sol", especie: "Perro", ubicacion: "Alajuela", estado: "Disponible" },
+        { nombre: "Chispa", especie: "Gato", ubicacion: "Heredia", estado: "En proceso" }
+    ];
+    function mostrarPublicaciones() {
+        listaPublicaciones.innerHTML = "";
+        const mensaje = document.getElementById("mensajePublicaciones");
+        mensaje.style.display = publicacionesEjemplo.length === 0 ? "block" : "none";
+        publicacionesEjemplo.forEach(function (mascota, indice) {
+            const tarjeta = document.createElement("article");
+            tarjeta.className = "tarjeta-publicacion";
+            const imagen = document.createElement("div");
+            imagen.className = "imagen-publicacion";
+            imagen.textContent = "♡";
+            const info = document.createElement("div");
+            info.className = "info-publicacion";
+            const titulo = document.createElement("h3");
+            titulo.textContent = mascota.nombre;
+            const datos = document.createElement("p");
+            datos.textContent = mascota.especie + " · " + mascota.ubicacion;
+            const estado = document.createElement("span");
+            estado.className = "estado-publicacion";
+            estado.textContent = mascota.estado;
+            const controles = document.createElement("div");
+            controles.className = "botones-publicacion";
+            const editar = document.createElement("button");
+            editar.className = "boton-borde";
+            editar.type = "button";
+            editar.textContent = "Editar nombre";
+            editar.addEventListener("click", function () {
+                const formulario = document.createElement("form");
+                const campo = document.createElement("input");
+                campo.type = "text";
+                campo.value = mascota.nombre;
+                campo.required = true;
+                campo.style.width = "100%";
+                campo.style.padding = "10px";
+                campo.style.margin = "10px 0";
+                const guardar = document.createElement("button");
+                guardar.className = "boton-verde";
+                guardar.type = "submit";
+                guardar.textContent = "Guardar nombre";
+                formulario.append(campo, guardar);
+                formulario.addEventListener("submit", function (evento) {
+                    evento.preventDefault();
+                    mascota.nombre = campo.value;
+                    mostrarPublicaciones();
+                });
+                controles.innerHTML = "";
+                controles.append(formulario);
+            });
+            const retirar = document.createElement("button");
+            retirar.className = "boton-cafe";
+            retirar.type = "button";
+            retirar.textContent = "Retirar";
+            retirar.addEventListener("click", function () {
+                if (confirm("¿Retirar esta publicación ficticia de la vista actual?")) {
+                    publicacionesEjemplo = publicacionesEjemplo.filter(function (publicacion, posicion) {
+                        return posicion !== indice;
+                    });
+                    mostrarPublicaciones();
+                }
+            });
+            controles.append(editar, retirar);
+            info.append(titulo, datos, estado, controles);
+            tarjeta.append(imagen, info);
+            listaPublicaciones.append(tarjeta);
+        });
+    }
+    mostrarPublicaciones();
 }
