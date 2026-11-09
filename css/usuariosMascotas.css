@@ -1,0 +1,143 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F7F3EC;
+    color: #2D2D2D;
+}
+
+a { text-decoration: none; }
+
+/* Encabezado */
+.encabezado { width: 100%; background-color: #2F5D50; }
+.navegacion {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 35px; width: 100%; max-width: 1600px; min-height: 95px;
+    margin: 0 auto; padding: 15px 35px;
+}
+.logo img { display: block; width: auto; max-width: 290px; height: 65px; object-fit: contain; }
+.menu { display: flex; align-items: center; justify-content: center; gap: 35px; list-style: none; }
+.menu li { display: inline-block; }
+.menu a { color: #FFFFFF; font-size: 16px; padding-bottom: 8px; }
+.menu a:hover, .menu a.activo { border-bottom: 2px solid #FFFFFF; }
+.boton-ingresar {
+    display: inline-block; background-color: #F7F3EC; color: #2D2D2D;
+    padding: 13px 28px; border-radius: 30px; font-weight: bold;
+}
+main { width: 100%; }
+
+/* Pie de página */
+.pie-pagina {
+    width: 100%; padding: 32px 6%; background-color: #2F5D50;
+    color: #FFFFFF; text-align: center;
+}
+.pie-pagina p { font-size: 15px; margin: 7px 0; }
+
+/* Catálogo */
+.presentacion-catalogo {
+    padding: 58px 6% 45px; text-align: center; background-color: #F7F3EC;
+}
+.etiqueta-catalogo {
+    display: inline-block; padding: 10px 20px; margin-bottom: 22px;
+    border-radius: 30px; background-color: #E1E9E1; color: #2F5D50;
+    font-size: 14px; font-weight: bold;
+}
+.presentacion-catalogo h1 {
+    color: #2F5D50; font-size: 42px; line-height: 1.2; margin-bottom: 16px;
+}
+.presentacion-catalogo h1 span { color: #6B4F3A; }
+.descripcion-catalogo {
+    max-width: 650px; margin: 0 auto; font-size: 17px; line-height: 1.7; color: #555555;
+}
+
+/* Estilos compartidos para Persona 2 */
+.contenedor-usuario { width: 100%; max-width: 1150px; margin: 0 auto; padding: 45px 5% 70px; }
+.encabezado-pagina { text-align: center; margin-bottom: 32px; }
+.encabezado-pagina .etiqueta-catalogo { margin-bottom: 16px; }
+.encabezado-pagina h1 { color: #2F5D50; font-size: 38px; margin-bottom: 12px; }
+.encabezado-pagina p { color: #666; font-size: 16px; line-height: 1.6; }
+.tarjeta-formulario, .panel-usuario, .tarjeta-publicacion {
+    background: #FFFFFF; border-radius: 20px; padding: 30px;
+    box-shadow: 0 5px 18px rgba(0,0,0,.07);
+}
+.tarjeta-formulario { max-width: 720px; margin: 0 auto; }
+.formulario { display: grid; grid-template-columns: 1fr 1fr; gap: 19px 20px; }
+.campo { display: flex; flex-direction: column; gap: 8px; }
+.campo.completo { grid-column: 1 / -1; }
+.campo label { color: #2D2D2D; font-size: 14px; font-weight: bold; }
+.campo input, .campo select, .campo textarea {
+    width: 100%; padding: 13px 14px; border: 1px solid #D9E0DA;
+    border-radius: 9px; background: #FFFFFF; color: #4B4B4B;
+    font-family: Arial, sans-serif; font-size: 14px;
+}
+.campo textarea { min-height: 105px; resize: vertical; }
+.campo input:focus, .campo select:focus, .campo textarea:focus {
+    outline: 2px solid #A8BFAF; border-color: #A8BFAF;
+}
+.ayuda { color: #777; font-size: 12px; line-height: 1.5; }
+.acciones-formulario { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 12px; margin-top: 5px; }
+.boton-verde, .boton-borde, .boton-cafe {
+    display: inline-block; border: 0; padding: 14px 23px; border-radius: 30px;
+    font-family: Arial, sans-serif; font-size: 15px; font-weight: bold; text-align: center; cursor: pointer;
+}
+.boton-verde { background: #2F5D50; color: #FFF; }
+.boton-verde:hover { background: #24493F; }
+.boton-borde { background: #F7F3EC; color: #2F5D50; border: 1px solid #2F5D50; }
+.boton-borde:hover { background: #E1E9E1; }
+.boton-cafe { background: #6B4F3A; color: #FFF; }
+.mensaje { display: none; margin-top: 18px; padding: 13px 16px; border-radius: 10px; background: #E1E9E1; color: #2F5D50; font-size: 14px; line-height: 1.5; }
+.enlace-formulario { display: block; margin-top: 20px; text-align: center; color: #2F5D50; font-size: 14px; }
+.enlace-formulario a { color: #6B4F3A; font-weight: bold; }
+.dos-columnas { display: grid; grid-template-columns: 280px 1fr; gap: 25px; align-items: start; }
+.avatar-usuario { width: 95px; height: 95px; margin: 0 auto 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: #E1E9E1; color: #2F5D50; font-size: 38px; font-weight: bold; }
+.resumen-perfil { text-align: center; }
+.resumen-perfil h2 { color: #2F5D50; font-size: 21px; margin-bottom: 7px; }
+.resumen-perfil p { color: #777; font-size: 14px; margin-bottom: 18px; }
+.lista-enlaces { list-style: none; margin-top: 20px; }
+.lista-enlaces li { padding: 12px 5px; border-top: 1px solid #E9E9E9; }
+.lista-enlaces a { color: #2F5D50; font-weight: bold; font-size: 14px; }
+.panel-usuario h2 { color: #2F5D50; font-size: 23px; margin-bottom: 22px; }
+.cabecera-publicaciones { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 24px; }
+.cabecera-publicaciones h2 { color: #2F5D50; font-size: 25px; }
+.cuadricula-publicaciones { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.tarjeta-publicacion { padding: 0; overflow: hidden; }
+.imagen-publicacion { height: 165px; background: #E1E9E1; display: flex; align-items: center; justify-content: center; color: #2F5D50; font-size: 48px; }
+.imagen-publicacion img { width: 100%; height: 100%; object-fit: cover; }
+.info-publicacion { padding: 18px; }
+.info-publicacion h3 { color: #2F5D50; font-size: 21px; margin-bottom: 7px; }
+.info-publicacion p { color: #666; font-size: 14px; margin-bottom: 13px; }
+.estado-publicacion { display: inline-block; padding: 7px 11px; border-radius: 20px; background: #E1E9E1; color: #2F5D50; font-size: 12px; font-weight: bold; margin-bottom: 13px; }
+.botones-publicacion { display: flex; gap: 8px; flex-wrap: wrap; }
+.botones-publicacion button { flex: 1; padding: 10px; border-radius: 20px; font-size: 12px; }
+.vacio { padding: 35px; text-align: center; color: #777; background: #FFF; border-radius: 18px; }
+@media (max-width: 1100px) {
+    .navegacion { flex-wrap: wrap; justify-content: center; gap: 20px; }
+    .menu { flex-wrap: wrap; gap: 22px; }
+    .cuadricula-publicaciones { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 800px) {
+    .navegacion { flex-direction: column; padding: 20px; }
+    .logo img { max-width: 250px; height: 58px; }
+    .menu { justify-content: center; gap: 18px; }
+    .menu a { font-size: 14px; }
+    .dos-columnas { grid-template-columns: 1fr; }
+    .cuadricula-publicaciones { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+    .contenedor-usuario { padding: 35px 5% 50px; }
+    .encabezado-pagina h1 { font-size: 30px; }
+    .tarjeta-formulario, .panel-usuario { padding: 22px; }
+    .formulario { grid-template-columns: 1fr; }
+    .campo.completo, .acciones-formulario { grid-column: auto; }
+    .acciones-formulario > * { width: 100%; }
+    .cuadricula-publicaciones { grid-template-columns: 1fr; }
+    .menu { gap: 13px; }
+    .menu a { font-size: 13px; }
+    .boton-ingresar { padding: 11px 24px; }
+}

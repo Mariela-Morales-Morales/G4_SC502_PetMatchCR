@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis publicaciones | PetMatch CR</title>
+    <link rel="stylesheet" href="../css/usuariosMascotas.css">
+    <script src="../js/usuarios.js" defer></script>
+</head>
+
+<body>
+    <header class="encabezado">
+        <nav class="navegacion">
+            <a href="../index.html" class="logo"><img src="../img/logos/04_Logo_Blanco_Para_Fondo_Verde.png"
+                    alt="PetMatch CR"></a>
+            <ul class="menu">
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="../catalogo.html">Mascotas</a></li>
+                <li><a href="../mascota/publicaciones.html">Mis publicaciones</a></li>
+                <li><a href="../usuarios/perfil.html">Mi perfil</a></li>
+            </ul>
+            <a href="inicioSesion.html" class="boton-ingresar">Ingresar</a>
+        </nav>
+    </header>
+    <main>
+        <section class="contenedor-usuario">
+            <div class="encabezado-pagina">
+                <span class="etiqueta-catalogo">Administra tus publicaciones</span>
+                <h1>Mis publicaciones ♡</h1>
+                <p>Revisa las mascotas que has registrado y mantén su información actualizada.</p>
+            </div>
+            <div class="cabecera-publicaciones">
+                <h2>Mascotas registradas</h2>
+                <a href="registroMascota.html" class="boton-verde">+ Registrar mascota</a>
+            </div>
+            <div id="listaPublicaciones" class="cuadricula-publicaciones"></div>
+            <p id="mensajePublicaciones" class="vacio" style="display:none;">Todavía no tienes mascotas publicadas.
+                ¡Registra la primera!</p>
+        </section>
+    </main>
+    <footer class="pie-pagina">
+        <p>PetMatch CR — Plataforma de adopción responsable</p>
+        <p>Un hogar cambia una vida. ♡</p>
+    </footer>
+</body>
+
+</html>

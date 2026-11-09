@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar mascota | PetMatch CR</title>
+    <link rel="stylesheet" href="../css/usuariosMascotas.css">
+    <script src="../js/usuarios.js" defer></script>
+    <style>
+        .form-mascota {
+            max-width: 900px;
+        }
+
+        .bloque-formulario {
+            grid-column: 1 / -1;
+            padding-bottom: 10px;
+            margin-top: 8px;
+            border-bottom: 1px solid #E9E9E9;
+        }
+
+        .bloque-formulario h2 {
+            color: #2F5D50;
+            font-size: 19px;
+            margin-bottom: 6px;
+        }
+
+        .bloque-formulario p {
+            color: #777;
+            font-size: 13px;
+        }
+
+        .campo input[type="file"] {
+            padding: 10px;
+            background: #F7F3EC;
+        }
+
+        .campo small {
+            color: #777;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .nota-foto {
+            background: #E1E9E1;
+            border-radius: 12px;
+            padding: 14px;
+            color: #2F5D50;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .vista-foto {
+            display: none;
+            width: 100%;
+            max-height: 220px;
+            object-fit: contain;
+            background: #F7F3EC;
+            border-radius: 12px;
+            margin-top: 10px;
+        }
+
+        .campo-check {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #555;
+            font-size: 14px;
+        }
+
+        .campo-check input {
+            accent-color: #2F5D50;
+            width: 17px;
+            height: 17px;
+        }
+
+        @media(max-width:600px) {
+            .bloque-formulario {
+                grid-column: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="encabezado">
+        <nav class="navegacion">
+            <a href="index.html" class="logo">
+                <img src="../img/logos/04_Logo_Blanco_Para_Fondo_Verde.png" alt="PetMatch CR">
+            </a>
+            <ul class="menu">
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="../catalogo.html">Mascotas</a></li>
+                <li><a href="../mascota/publicaciones.html">Mis publicaciones</a></li>
+                <li><a href="../usuarios/perfil.html">Mi perfil</a></li>
+            </ul>
+            <a href="inicioSesion.html" class="boton-ingresar">Ingresar</a>
+        </nav>
+    </header>
+    <main>
+        <section class="contenedor-usuario">
+            <div class="encabezado-pagina">
+                <span class="etiqueta-catalogo">Una nueva oportunidad</span>
+                <h1>Registrar una mascota <span style="color:#6B4F3A">♡</span></h1>
+                <p>Completa la información para que más personas puedan conocerla y darle un hogar lleno de amor.</p>
+            </div>
+            <section class="tarjeta-formulario form-mascota">
+                <form id="formMascota" class="formulario">
+                    <div class="bloque-formulario">
+                        <h2>Información de la mascota</h2>
+                        <p>Cuéntanos los datos principales de tu compañero.</p>
+                    </div>
+                    <div class="campo"><label for="mascotaNombre">Nombre de la mascota *</label><input
+                            id="mascotaNombre" name="nombre" type="text" placeholder="Ej. Teresita" required></div>
+                    <div class="campo"><label for="especieMascota">Especie *</label><select id="especieMascota"
+                            required>
+                            <option value="">Selecciona una opción</option>
+                            <option>Perro</option>
+                            <option>Gato</option>
+                            <option>Otra</option>
+                        </select></div>
+                    <div class="campo"><label for="razaMascota">Raza</label><input id="razaMascota" type="text"
+                            placeholder="Ej. Mestizo / No especificada"></div>
+                    <div class="campo"><label for="edadMascota">Edad aproximada *</label><input id="edadMascota"
+                            type="text" placeholder="Ej. 8 meses o 2 años" required></div>
+                    <div class="campo"><label for="sexoMascota">Sexo *</label><select id="sexoMascota" required>
+                            <option value="">Selecciona una opción</option>
+                            <option>Hembra</option>
+                            <option>Macho</option>
+                            <option>No se sabe</option>
+                        </select></div>
+                    <div class="campo"><label for="tamanoMascota">Tamaño *</label><select id="tamanoMascota" required>
+                            <option value="">Selecciona una opción</option>
+                            <option>Pequeño</option>
+                            <option>Mediano</option>
+                            <option>Grande</option>
+                        </select></div>
+                    <div class="campo"><label for="ubicacionMascota">Provincia *</label><select id="ubicacionMascota"
+                            required>
+                            <option value="">Selecciona una provincia</option>
+                            <option>San José</option>
+                            <option>Alajuela</option>
+                            <option>Cartago</option>
+                            <option>Heredia</option>
+                            <option>Guanacaste</option>
+                            <option>Puntarenas</option>
+                            <option>Limón</option>
+                        </select></div>
+                    <div class="campo"><label for="estadoMascota">Estado de publicación</label><select
+                            id="estadoMascota">
+                            <option>Disponible</option>
+                            <option>En proceso</option>
+                        </select></div>
+                    <div class="bloque-formulario">
+                        <h2>Salud y cuidados</h2>
+                        <p>Esta información ayuda a las familias interesadas a conocer sus necesidades.</p>
+                    </div>
+                    <div class="campo"><label for="vacunasMascota">Vacunas</label><select id="vacunasMascota">
+                            <option value="">Selecciona una opción</option>
+                            <option>Al día</option>
+                            <option>Incompletas</option>
+                            <option>Sin vacunas</option>
+                            <option>No se sabe</option>
+                        </select></div>
+                    <div class="campo"><label for="esterilizadaMascota">¿Está esterilizada?</label><select
+                            id="esterilizadaMascota">
+                            <option value="">Selecciona una opción</option>
+                            <option>Sí</option>
+                            <option>No</option>
+                            <option>No se sabe</option>
+                        </select></div>
+                    <div class="campo completo"><label for="descripcionMascota">Descripción de la mascota
+                            *</label><textarea id="descripcionMascota"
+                            placeholder="Describe su personalidad, comportamiento, cuidados y por qué busca un hogar..."
+                            required></textarea></div>
+                    <div class="bloque-formulario">
+                        <h2>Fotografía</h2>
+                        <p>Agrega una imagen clara para que puedan conocerla mejor.</p>
+                    </div>
+                    <div class="campo completo"><label for="fotoMascota">Seleccionar fotografía</label><input
+                            id="fotoMascota" type="file" accept="image/*"><small>Imagen opcional. Para este prototipo se
+                            recomienda un archivo menor a 700 KB.</small><img id="vistaFoto" class="vista-foto"
+                            alt="Vista previa de la mascota"></div>
+                    <div class="campo completo">
+                        <div class="nota-foto">♡ Antes de publicar, verifica que la información sea correcta y que
+                            puedas atender a las personas interesadas en la adopción.</div>
+                    </div>
+                    <div class="acciones-formulario"><button class="boton-verde" type="submit">Publicar
+                            mascota</button><a class="boton-borde" href="mis-publicaciones.html">Cancelar</a></div>
+                </form>
+                <p id="mensajeMascota" class="mensaje" role="status"></p>
+            </section>
+        </section>
+    </main>
+    <footer class="pie-pagina">
+        <p>PetMatch CR — Plataforma de adopción responsable</p>
+        <p>Un hogar cambia una vida. ♡</p>
+    </footer>
+    <script>
+        const entradaFoto = document.getElementById('fotoMascota');
+        entradaFoto.addEventListener('change', () => {
+            const archivo = entradaFoto.files[0];
+            const vista = document.getElementById('vistaFoto');
+            if (!archivo) {vista.style.display = 'none'; return;}
+            vista.src = URL.createObjectURL(archivo);
+            vista.style.display = 'block';
+        });
+    </script>
+</body>
+
+</html>
