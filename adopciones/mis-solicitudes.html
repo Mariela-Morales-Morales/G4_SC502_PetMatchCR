@@ -3,50 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mis solicitudes | PetMatch CR</title>
-
+    <title>PetMatch CR | Mis solicitudes</title>
+    <link rel="icon" href="../img/logos/05_Favicon_PetMatchCR.png">
     <link rel="stylesheet" href="../css/estilos.css">
     <link rel="stylesheet" href="../css/adopciones.css">
 </head>
 <body data-pagina="enviadas">
 
+    <!-- Encabezado -->
     <header class="encabezado">
         <nav class="navegacion">
             <a href="../index.html" class="logo">
-                <img src="../img/logos/04_Logo_Blanco_Para_Fondo_Verde.png"
-                     alt="PetMatch CR">
+                <img src="../img/logos/04_Logo_Blanco_Para_Fondo_Verde.png" alt="PetMatch CR">
             </a>
-
             <ul class="menu">
                 <li><a href="../index.html">Inicio</a></li>
                 <li><a href="../catalogo.html">Mascotas</a></li>
-                <li><a href="solicitar-adopcion.html">Adoptar</a></li>
+                <li><a href="solicitar-adopcion.html" class="activo">Adoptar</a></li>
+                <li><a href="../index.html#adopcion">Sobre la adopción</a></li>
+                <li><a href="../index.html#contacto">Contacto</a></li>
             </ul>
+            <span class="boton-ingresar">Ingresar</span>
         </nav>
     </header>
 
     <main class="adopciones-contenedor">
-        <h1 class="adopciones-titulo">Mis solicitudes</h1>
 
+        <!-- Presentación -->
+        <h1 class="adopciones-titulo">Mis solicitudes ♡</h1>
         <p class="adopciones-descripcion">
-            Consulta el estado de las solicitudes de adopción
-            que has enviado.
+            Consulta el estado de las solicitudes de adopción que has enviado.
         </p>
 
+        <!-- Navegación de adopciones -->
         <div class="adopciones-nav">
-            <a href="solicitar-adopcion.html">Solicitar</a>
+            <a href="solicitar-adopcion.html">Solicitar adopción</a>
             <a href="mis-solicitudes.html" class="activo">Mis solicitudes</a>
             <a href="solicitudes-recibidas.html">Panel rescatista</a>
         </div>
 
+        <!-- Búsqueda de solicitudes -->
         <div class="adopciones-mensaje">
-            Vista de demostración del adoptante:
-            Carlos Ramirez (carlos@ejemplo.com).
+            Esta es una demostración: escribe el correo que utilizaste en tu solicitud.
+            Para probar puedes usar carlos@ejemplo.com o maria@ejemplo.com.
+            No utilices datos personales reales.
         </div>
 
-        <section id="lista-solicitudes" class="adopciones-lista">
+        <section class="adopciones-tarjeta">
+            <h2>Consultar solicitudes enviadas</h2>
+            <form id="formulario-busqueda" class="adopciones-formulario">
+                <div class="adopciones-campo completo">
+                    <label for="correo-busqueda">Correo electrónico</label>
+                    <input type="email" id="correo-busqueda" name="correo-busqueda"
+                           placeholder="ejemplo@correo.com" required>
+                </div>
+                <div class="adopciones-campo completo">
+                    <button type="submit" class="adopciones-boton">
+                        Buscar solicitudes
+                    </button>
+                </div>
+            </form>
         </section>
+
+        <!-- Resultados -->
+        <section id="lista-solicitudes" class="adopciones-lista"></section>
     </main>
+
+    <!-- Pie de página -->
+    <footer class="pie-pagina" id="contacto">
+        <p>PetMatch CR — Plataforma de adopción responsable</p>
+        <p>Un hogar cambia una vida. ♡</p>
+    </footer>
 
     <script src="../js/adopciones.js"></script>
 </body>

@@ -1,62 +1,68 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalle de solicitud | PetMatch CR</title>
-
+    <title>PetMatch CR | Detalle de solicitud</title>
+    <link rel="icon" href="../img/logos/05_Favicon_PetMatchCR.png">
     <link rel="stylesheet" href="../css/estilos.css">
     <link rel="stylesheet" href="../css/adopciones.css">
 </head>
 <body data-pagina="detalle">
 
-<header class="encabezado">
-    <nav class="navegacion">
-        <a href="../index.html" class="logo">
-            <img src="../img/logos/04_Logo_Blanco_Para_Fondo_Verde.png"
-                 alt="PetMatch CR">
+    <!-- Encabezado -->
+    <header class="encabezado">
+        <nav class="navegacion">
+            <a href="../index.html" class="logo">
+                <img src="../img/logos/04_Logo_Blanco_Para_Fondo_Verde.png" alt="PetMatch CR">
+            </a>
+            <ul class="menu">
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="../catalogo.html">Mascotas</a></li>
+                <li><a href="solicitar-adopcion.html" class="activo">Adoptar</a></li>
+                <li><a href="../index.html#adopcion">Sobre la adopción</a></li>
+                <li><a href="../index.html#contacto">Contacto</a></li>
+            </ul>
+            <span class="boton-ingresar">Ingresar</span>
+        </nav>
+    </header>
+
+    <main class="adopciones-contenedor">
+
+        <!-- Presentación -->
+        <h1 class="adopciones-titulo">Detalle de solicitud ♡</h1>
+        <p class="adopciones-descripcion">
+            Consulta la información de una solicitud y realiza su seguimiento.
+        </p>
+
+        <!-- Navegación de adopciones -->
+        <div class="adopciones-nav">
+            <a href="solicitar-adopcion.html">Solicitar adopción</a>
+            <a href="mis-solicitudes.html" id="enlace-adoptante">Mis solicitudes</a>
+            <a href="solicitudes-recibidas.html" id="enlace-rescatista">Panel rescatista</a>
+        </div>
+
+        <!-- Detalle de solicitud -->
+        <div class="adopciones-mensaje" id="mensaje-detalle">
+            Consulta la información y el estado de la solicitud de ejemplo.
+        </div>
+
+        <section id="detalle-solicitud"
+                 class="adopciones-tarjeta adopciones-detalle"></section>
+
+        <a href="mis-solicitudes.html" id="volver-solicitudes"
+           class="adopciones-boton secundario">
+            Volver a solicitudes
         </a>
+    </main>
 
-        <ul class="menu">
-            <li><a href="../index.html">Inicio</a></li>
-            <li><a href="../catalogo.html">Mascotas</a></li>
-            <li><a href="solicitudes-recibidas.html">
-                Panel rescatista
-            </a></li>
-        </ul>
-    </nav>
-</header>
+    <!-- Pie de página -->
+    <footer class="pie-pagina" id="contacto">
+        <p>PetMatch CR — Plataforma de adopción responsable</p>
+        <p>Un hogar cambia una vida. ♡</p>
+    </footer>
 
-<main class="adopciones-contenedor">
-    <h1 class="adopciones-titulo">Detalle de solicitud</h1>
-
-    <p class="adopciones-descripcion">
-        Información del proceso de adopción y seguimiento
-        del estado de la solicitud.
-    </p>
-
-    <div class="adopciones-nav">
-        <a href="mis-solicitudes.html">Mis solicitudes</a>
-        <a href="solicitudes-recibidas.html">
-            Solicitudes recibidas
-        </a>
-    </div>
-
-    <div class="adopciones-mensaje">
-        Demostración de estados: los botones permiten simular
-        las decisiones del rescatista.
-    </div>
-
-    <section id="detalle-solicitud"
-             class="adopciones-tarjeta adopciones-detalle">
-    </section>
-
-    <a href="solicitudes-recibidas.html"
-       class="adopciones-boton secundario">
-        Volver a solicitudes
-    </a>
-</main>
-
-<script src="../js/adopciones.js"></script>
+    <script src="../js/adopciones.js"></script>
 </body>
 </html>

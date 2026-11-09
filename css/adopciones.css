@@ -1,23 +1,27 @@
 
+/* Adopciones */
 .adopciones-contenedor {
+    width: 100%;
     max-width: 1100px;
+    min-height: 500px;
     margin: 45px auto;
-    padding: 0 20px;
-    min-height: 65vh;
+    padding: 0 20px 65px;
 }
 
 .adopciones-titulo {
     color: #2F5D50;
-    font-size: 32px;
-    margin-bottom: 12px;
+    font-size: 36px;
+    margin-bottom: 15px;
 }
 
 .adopciones-descripcion {
-    color: #666;
+    color: #555555;
+    font-size: 16px;
+    line-height: 1.7;
     margin-bottom: 28px;
-    line-height: 1.6;
 }
 
+/* Navegación de adopciones */
 .adopciones-nav {
     display: flex;
     flex-wrap: wrap;
@@ -25,35 +29,40 @@
     margin-bottom: 30px;
 }
 
-    .adopciones-nav a {
-        background: white;
-        color: #2F5D50;
-        padding: 12px 18px;
-        border-radius: 10px;
-        font-weight: bold;
-        border: 1px solid #d9e5df;
-        text-decoration: none;
-    }
+.adopciones-nav a {
+    display: inline-block;
+    background-color: #FFFFFF;
+    color: #2F5D50;
+    padding: 12px 20px;
+    border: 1px solid #A8BFAF;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
 
-        .adopciones-nav a:hover,
-        .adopciones-nav a.activo {
-            background: #2F5D50;
-            color: white;
-        }
+.adopciones-nav a:hover,
+.adopciones-nav a.activo {
+    background-color: #2F5D50;
+    color: #FFFFFF;
+}
 
+/* Tarjetas */
 .adopciones-tarjeta {
-    background: white;
-    padding: 28px;
-    border-radius: 16px;
-    box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+    background-color: #FFFFFF;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.07);
+    margin-bottom: 25px;
+}
+
+.adopciones-tarjeta h2 {
+    color: #2F5D50;
+    font-size: 23px;
     margin-bottom: 22px;
 }
 
-    .adopciones-tarjeta h2 {
-        color: #2F5D50;
-        margin-bottom: 20px;
-    }
-
+/* Formulario */
 .adopciones-formulario {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -63,63 +72,76 @@
 .adopciones-campo {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 9px;
 }
 
-    .adopciones-campo.completo {
-        grid-column: 1 / -1;
-    }
+.adopciones-campo.completo {
+    grid-column: 1 / -1;
+}
 
-    .adopciones-campo label {
-        font-weight: bold;
-        color: #333;
-    }
+.adopciones-campo label {
+    color: #2D2D2D;
+    font-size: 15px;
+    font-weight: bold;
+}
 
-    .adopciones-campo input,
-    .adopciones-campo select,
-    .adopciones-campo textarea {
-        padding: 12px;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        font: inherit;
-        width: 100%;
-        box-sizing: border-box;
-        background: white;
-    }
+.adopciones-campo input,
+.adopciones-campo select,
+.adopciones-campo textarea {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #D9E0DA;
+    border-radius: 9px;
+    background-color: #FFFFFF;
+    color: #2D2D2D;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+}
 
-    .adopciones-campo textarea {
-        min-height: 110px;
-        resize: vertical;
-    }
+.adopciones-campo input:focus,
+.adopciones-campo select:focus,
+.adopciones-campo textarea:focus {
+    outline: 2px solid #A8BFAF;
+}
 
+.adopciones-campo textarea {
+    min-height: 110px;
+}
+
+/* Botones */
 .adopciones-boton {
     display: inline-block;
-    background: #2F5D50;
-    color: white;
-    padding: 13px 22px;
+    padding: 14px 24px;
     border: none;
-    border-radius: 9px;
-    cursor: pointer;
-    font: inherit;
+    border-radius: 30px;
+    background-color: #2F5D50;
+    color: #FFFFFF;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
     font-weight: bold;
     text-align: center;
-    text-decoration: none;
+    cursor: pointer;
 }
 
-    .adopciones-boton:hover {
-        background: #24483e;
-    }
+.adopciones-boton:hover {
+    background-color: #24493F;
+}
 
-    .adopciones-boton.secundario {
-        background: #e6ede9;
-        color: #2F5D50;
-    }
+.adopciones-boton.secundario {
+    background-color: #E1E9E1;
+    color: #2F5D50;
+}
 
-    .adopciones-boton.peligro {
-        background: #a74444;
-        color: white;
-    }
+.adopciones-boton.secundario:hover {
+    background-color: #A8BFAF;
+}
 
+.adopciones-boton.peligro {
+    background-color: #A74444;
+    color: #FFFFFF;
+}
+
+/* Listado de solicitudes */
 .adopciones-lista {
     display: grid;
     gap: 20px;
@@ -129,87 +151,119 @@
     display: flex;
     align-items: center;
     gap: 22px;
-    background: white;
-    padding: 20px;
-    border-radius: 14px;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+    background-color: #FFFFFF;
+    padding: 22px;
+    border-radius: 20px;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.07);
 }
 
-    .adopciones-item img {
-        width: 125px;
-        height: 125px;
-        object-fit: cover;
-        border-radius: 12px;
-    }
+.adopciones-item img {
+    width: 125px;
+    height: auto;
+    border-radius: 15px;
+}
 
 .adopciones-info {
     flex: 1;
 }
 
-    .adopciones-info h3 {
-        color: #2F5D50;
-        margin-bottom: 10px;
-    }
+.adopciones-info h3 {
+    color: #2F5D50;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
 
-    .adopciones-info p {
-        margin-bottom: 8px;
-    }
+.adopciones-info p {
+    color: #555555;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 8px;
+}
 
+/* Estados */
 .adopciones-estado {
     display: inline-block;
-    padding: 7px 13px;
-    border-radius: 20px;
+    padding: 8px 15px;
+    border-radius: 30px;
     font-size: 13px;
     font-weight: bold;
-    margin: 8px 0;
+    margin: 10px 0;
 }
 
 .estado-pendiente {
-    background: #fff1c7;
+    background-color: #FFF1C7;
     color: #866100;
 }
 
 .estado-revision {
-    background: #dbeafe;
-    color: #1d4ed8;
+    background-color: #DBEAFE;
+    color: #1D4ED8;
 }
 
 .estado-aprobada {
-    background: #d9f4e1;
-    color: #237a40;
+    background-color: #D9F4E1;
+    color: #237A40;
 }
 
 .estado-rechazada {
-    background: #fbe0e0;
-    color: #a12c2c;
+    background-color: #FBE0E0;
+    color: #A12C2C;
 }
 
+/* Acciones y seguimiento */
 .adopciones-acciones {
     display: flex;
-    gap: 12px;
     flex-wrap: wrap;
+    gap: 12px;
     margin-top: 18px;
 }
 
 .adopciones-detalle p {
-    margin-bottom: 14px;
+    color: #555555;
+    font-size: 15px;
     line-height: 1.6;
+    margin-bottom: 14px;
 }
 
+/* Mensajes */
 .adopciones-mensaje {
-    padding: 15px;
-    background: #e6ede9;
-    border-radius: 10px;
-    margin-bottom: 20px;
+    padding: 17px 20px;
+    background-color: #E1E9E1;
+    color: #2F5D50;
+    border-radius: 15px;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 25px;
 }
 
 .adopciones-vacio {
+    padding: 35px;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    color: #666666;
     text-align: center;
-    color: #666;
-    padding: 30px;
+    font-size: 15px;
 }
 
+/* Diseño adaptable */
 @media (max-width: 700px) {
+    .adopciones-contenedor {
+        margin: 30px auto;
+        padding: 0 20px 45px;
+    }
+
+    .adopciones-titulo {
+        font-size: 28px;
+    }
+
+    .adopciones-descripcion {
+        font-size: 15px;
+    }
+
+    .adopciones-tarjeta {
+        padding: 23px;
+    }
+
     .adopciones-formulario {
         grid-template-columns: 1fr;
     }
@@ -219,12 +273,27 @@
         align-items: flex-start;
     }
 
-        .adopciones-item img {
-            width: 100%;
-            height: 200px;
-        }
-
-    .adopciones-titulo {
-        font-size: 26px;
+    .adopciones-item img {
+        width: 100%;
+        height: auto;
     }
+
+    .adopciones-nav a {
+        font-size: 13px;
+        padding: 11px 15px;
+    }
+
+    .adopciones-boton {
+        font-size: 14px;
+    }
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.adopciones-contenedor {
+    flex: 1;
 }

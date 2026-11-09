@@ -1,87 +1,153 @@
+
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solicitar adopción | PetMatch CR</title>
 
+    <title>PetMatch CR | Solicitar adopción</title>
+
+    <link rel="icon" href="../img/logos/05_Favicon_PetMatchCR.png">
     <link rel="stylesheet" href="../css/estilos.css">
     <link rel="stylesheet" href="../css/adopciones.css">
 </head>
+
 <body>
 
+    <!-- Encabezado -->
     <header class="encabezado">
         <nav class="navegacion">
+
             <a href="../index.html" class="logo">
                 <img src="../img/logos/04_Logo_Blanco_Para_Fondo_Verde.png"
                      alt="PetMatch CR">
             </a>
 
             <ul class="menu">
-                <li><a href="../index.html">Inicio</a></li>
-                <li><a href="../catalogo.html">Mascotas</a></li>
-                <li><a href="mis-solicitudes.html">Mis solicitudes</a></li>
+                <li>
+                    <a href="../index.html">Inicio</a>
+                </li>
+
+                <li>
+                    <a href="../catalogo.html">Mascotas</a>
+                </li>
+
+                <li>
+                    <a href="solicitar-adopcion.html" class="activo">Adoptar</a>
+                </li>
+
+                <li>
+                    <a href="../index.html#adopcion">Sobre la adopción</a>
+                </li>
+
+                <li>
+                    <a href="../index.html#contacto">Contacto</a>
+                </li>
             </ul>
+
+            <span class="boton-ingresar">Ingresar</span>
+
         </nav>
     </header>
 
     <main class="adopciones-contenedor">
-        <h1 class="adopciones-titulo">Solicitar adopción</h1>
+
+        <!-- Presentación -->
+        <h1 class="adopciones-titulo">
+            Solicitar adopción ♡
+        </h1>
+
         <p class="adopciones-descripcion">
             Completa el formulario para dar el primer paso
             hacia la adopción responsable de una mascota.
         </p>
 
+        <!-- Navegación de adopciones -->
         <div class="adopciones-nav">
-            <a href="solicitar-adopcion.html" class="activo">Solicitar</a>
-            <a href="mis-solicitudes.html">Mis solicitudes</a>
-            <a href="solicitudes-recibidas.html">Panel rescatista</a>
+            <a href="solicitar-adopcion.html" class="activo">
+                Solicitar adopción
+            </a>
+
+            <a href="mis-solicitudes.html">
+                Mis solicitudes
+            </a>
+
+            <a href="solicitudes-recibidas.html">
+                Panel rescatista
+            </a>
         </div>
 
+        <!-- Formulario -->
         <section class="adopciones-tarjeta">
+
             <h2>Formulario de solicitud</h2>
 
             <form id="formulario-adopcion" class="adopciones-formulario">
 
                 <div class="adopciones-campo completo">
-                    <label for="mascota">Mascota que deseas adoptar</label>
+                    <label for="mascota">
+                        Mascota que deseas adoptar
+                    </label>
+
                     <select id="mascota" name="mascota" required>
                         <option value="">Selecciona una mascota</option>
-                        <option value="luna">Luna</option>
-                        <option value="max">Max</option>
-                        <option value="canela">Canela</option>
                         <option value="milo">Milo</option>
+                        <option value="luna">Luna</option>
+                        <option value="canela">Canela</option>
+                        <option value="max">Max</option>
                         <option value="nala">Nala</option>
                         <option value="toby">Toby</option>
                     </select>
                 </div>
 
                 <div class="adopciones-campo">
-                    <label for="nombre">Nombre completo</label>
-                    <input type="text" id="nombre" name="nombre"
-                           required placeholder="Tu nombre completo">
+                    <label for="nombre">
+                        Nombre completo
+                    </label>
+
+                    <input type="text"
+                           id="nombre"
+                           name="nombre"
+                           placeholder="Tu nombre completo"
+                           required>
                 </div>
 
                 <div class="adopciones-campo">
-                    <label for="correo">Correo electrónico</label>
-                    <input type="email" id="correo" name="correo"
-                           required placeholder="ejemplo@correo.com">
+                    <label for="correo">
+                        Correo electrónico
+                    </label>
+
+                    <input type="email"
+                           id="correo"
+                           name="correo"
+                           placeholder="ejemplo@correo.com"
+                           required>
                 </div>
 
                 <div class="adopciones-campo">
-                    <label for="telefono">Teléfono</label>
-                    <input type="tel" id="telefono" name="telefono"
-                           required placeholder="8888-8888">
+                    <label for="telefono">
+                        Teléfono
+                    </label>
+
+                    <input type="tel"
+                           id="telefono"
+                           name="telefono"
+                           placeholder="8888-8888"
+                           required>
                 </div>
 
                 <div class="adopciones-campo">
-                    <label for="vivienda">Tipo de vivienda</label>
+                    <label for="vivienda">
+                        Tipo de vivienda
+                    </label>
+
                     <select id="vivienda" name="vivienda" required>
-                        <option value="">Seleccionar</option>
-                        <option>Casa propia</option>
-                        <option>Casa alquilada</option>
-                        <option>Apartamento</option>
-                        <option>Otro</option>
+                        <option value="">Selecciona una opción</option>
+                        <option value="Casa propia">Casa propia</option>
+                        <option value="Casa alquilada">Casa alquilada</option>
+                        <option value="Apartamento">Apartamento</option>
+                        <option value="Otro">Otro</option>
                     </select>
                 </div>
 
@@ -89,7 +155,10 @@
                     <label for="experiencia">
                         ¿Tienes experiencia cuidando mascotas?
                     </label>
-                    <textarea id="experiencia" name="experiencia"
+
+                    <textarea id="experiencia"
+                              name="experiencia"
+                              placeholder="Cuéntanos sobre tu experiencia..."
                               required></textarea>
                 </div>
 
@@ -97,19 +166,37 @@
                     <label for="motivo">
                         ¿Por qué deseas adoptar esta mascota?
                     </label>
-                    <textarea id="motivo" name="motivo"
+
+                    <textarea id="motivo"
+                              name="motivo"
+                              placeholder="Cuéntanos por qué deseas adoptar..."
                               required></textarea>
                 </div>
 
                 <div class="adopciones-campo completo">
                     <button type="submit" class="adopciones-boton">
-                        Enviar solicitud de adopción
+                        Enviar solicitud de adopción ♡
                     </button>
                 </div>
+
             </form>
+
         </section>
+
+        <div class="adopciones-mensaje">
+            Esta es una versión de demostración de PetMatch CR.
+            Utiliza información ficticia para realizar las pruebas.
+        </div>
+
     </main>
 
+    <!-- Pie de página -->
+    <footer class="pie-pagina" id="contacto">
+        <p>PetMatch CR — Plataforma de adopción responsable</p>
+        <p>Un hogar cambia una vida. ♡</p>
+    </footer>
+
     <script src="../js/adopciones.js"></script>
+
 </body>
 </html>

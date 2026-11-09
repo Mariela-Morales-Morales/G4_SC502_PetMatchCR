@@ -1,55 +1,105 @@
+
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solicitudes recibidas | PetMatch CR</title>
 
+    <title>PetMatch CR | Solicitudes recibidas</title>
+
+    <link rel="icon" href="../img/logos/05_Favicon_PetMatchCR.png">
     <link rel="stylesheet" href="../css/estilos.css">
     <link rel="stylesheet" href="../css/adopciones.css">
 </head>
+
 <body data-pagina="recibidas">
 
-<header class="encabezado">
-    <nav class="navegacion">
-        <a href="../index.html" class="logo">
-            <img src="../img/logos/04_Logo_Blanco_Para_Fondo_Verde.png"
-                 alt="PetMatch CR">
-        </a>
+    <!-- Encabezado -->
+    <header class="encabezado">
+        <nav class="navegacion">
 
-        <ul class="menu">
-            <li><a href="../index.html">Inicio</a></li>
-            <li><a href="../catalogo.html">Mascotas</a></li>
-            <li><a href="mis-solicitudes.html">Mis solicitudes</a></li>
-        </ul>
-    </nav>
-</header>
+            <a href="../index.html" class="logo">
+                <img src="../img/logos/04_Logo_Blanco_Para_Fondo_Verde.png"
+                     alt="PetMatch CR">
+            </a>
 
-<main class="adopciones-contenedor">
-    <h1 class="adopciones-titulo">Panel del rescatista</h1>
+            <ul class="menu">
+                <li>
+                    <a href="../index.html">Inicio</a>
+                </li>
 
-    <p class="adopciones-descripcion">
-        Revisa las solicitudes de personas interesadas
-        en adoptar mascotas y administra su seguimiento.
-    </p>
+                <li>
+                    <a href="../catalogo.html">Mascotas</a>
+                </li>
 
-    <div class="adopciones-nav">
-        <a href="solicitar-adopcion.html">Solicitar</a>
-        <a href="mis-solicitudes.html">Mis solicitudes</a>
-        <a href="solicitudes-recibidas.html" class="activo">
-            Solicitudes recibidas
-        </a>
-    </div>
+                <li>
+                    <a href="solicitar-adopcion.html" class="activo">Adoptar</a>
+                </li>
 
-    <div class="adopciones-mensaje">
-        Panel de demostración: se muestran todas las solicitudes
-        para simular la gestión del rescatista.
-    </div>
+                <li>
+                    <a href="../index.html#adopcion">Sobre la adopción</a>
+                </li>
 
-    <section id="lista-solicitudes" class="adopciones-lista">
-    </section>
-</main>
+                <li>
+                    <a href="../index.html#contacto">Contacto</a>
+                </li>
+            </ul>
 
-<script src="../js/adopciones.js"></script>
+            <span class="boton-ingresar">Ingresar</span>
+
+        </nav>
+    </header>
+
+    <main class="adopciones-contenedor">
+
+        <!-- Presentación -->
+        <h1 class="adopciones-titulo">
+            Panel del rescatista ♡
+        </h1>
+
+        <p class="adopciones-descripcion">
+            Consulta las solicitudes de personas interesadas
+            en adoptar mascotas y realiza el seguimiento
+            de cada proceso de adopción.
+        </p>
+
+        <!-- Navegación de adopciones -->
+        <div class="adopciones-nav">
+
+            <a href="solicitar-adopcion.html">
+                Solicitar adopción
+            </a>
+
+            <a href="mis-solicitudes.html">
+                Mis solicitudes
+            </a>
+
+            <a href="solicitudes-recibidas.html" class="activo">
+                Panel rescatista
+            </a>
+
+        </div>
+
+        <!-- Solicitudes recibidas -->
+        <div class="adopciones-mensaje">
+            Esta es una vista de demostración del rescatista.
+            Se muestran todas las solicitudes registradas
+            para simular su revisión y seguimiento.
+        </div>
+
+        <section id="lista-solicitudes" class="adopciones-lista">
+        </section>
+
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="pie-pagina" id="contacto">
+        <p>PetMatch CR — Plataforma de adopción responsable</p>
+        <p>Un hogar cambia una vida. ♡</p>
+    </footer>
+
+    <script src="../js/adopciones.js"></script>
+
 </body>
 </html>
