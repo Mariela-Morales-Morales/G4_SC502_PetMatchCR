@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PetMatch CR | Administración de usuarios</title>
+
+    <link rel="icon" href="../img/logos/05_Favicon_PetMatchCR.png">
+    <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="stylesheet" href="../css/adopciones.css">
+    <link rel="stylesheet" href="../css/administracion.css">
+</head>
+
+<body data-admin="usuarios">
+
+    <!-- Encabezado -->
+    <header class="encabezado">
+        <nav class="navegacion">
+
+            <a href="../index.html" class="logo">
+                <img src="../img/logos/04_Logo_Blanco_Para_Fondo_Verde.png"
+                     alt="PetMatch CR">
+            </a>
+
+            <ul class="menu">
+                <li>
+                    <a href="../index.html">Inicio</a>
+                </li>
+
+                <li>
+                    <a href="../catalogo.html">Mascotas</a>
+                </li>
+
+                <li>
+                    <a href="../adopciones/solicitar-adopcion.html">Adoptar</a>
+                </li>
+
+                <li>
+                    <a href="../index.html#adopcion">Sobre la adopción</a>
+                </li>
+
+                <li>
+                    <a href="../index.html#contacto">Contacto</a>
+                </li>
+            </ul>
+
+            <a href="../usuarios/inicioSesion.html" class="boton-ingresar">Ingresar</a>
+
+        </nav>
+    </header>
+
+    <main class="adopciones-contenedor">
+
+        <h1 class="adopciones-titulo">Administración de usuarios</h1>
+        <p class="adopciones-descripcion">Consulta las cuentas registradas y cambia su acceso al prototipo.</p>
+
+        <nav class="adopciones-nav" aria-label="Administración">
+            <a href="index.html">Resumen</a>
+            <a href="usuarios.html" class="activo" aria-current="page">Usuarios</a>
+            <a href="mascotas.html">Mascotas</a>
+            <a href="solicitudes.html">Solicitudes</a>
+        </nav>
+
+        <p id="mensaje-admin" class="adopciones-mensaje" role="status" hidden></p>
+
+        <section class="adopciones-tarjeta" aria-labelledby="titulo-registros">
+            <h2 id="titulo-registros">Usuarios registrados</h2>
+            <div class="admin-tabla" tabindex="0" role="region" aria-labelledby="titulo-registros">
+                <table aria-labelledby="titulo-registros">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Correo</th>
+                            <th scope="col">Teléfono</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="lista-admin"></tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="pie-pagina" id="contacto">
+        <p>PetMatch CR — Plataforma de adopción responsable</p>
+        <p>Un hogar cambia una vida. ♡</p>
+    </footer>
+
+    <script src="../js/usuarios.js"></script>
+    <script src="../js/adopciones.js"></script>
+    <script src="../js/administracion.js"></script>
+
+</body>
+</html>

@@ -8,7 +8,12 @@ const mostrar = (id, texto) => {
     const elemento = document.getElementById(id);
     if (elemento) { elemento.textContent = texto; elemento.style.display = "block"; }
 };
-const usuarioActual = () => leer("petmatch_usuario", null);
+const usuarioActual = () => {
+    const sesion = leer("petmatch_usuario", null);
+    if (!sesion) return null;
+    const usuario = leer("petmatch_usuarios", []).find(u => u.correo === sesion.correo);
+    return usuario && usuario.estado !== "Suspendido" ? usuario : null;
+};
 
 // Registro de usuarios
 const formRegistro = document.getElementById("formRegistro");
@@ -40,6 +45,7 @@ if (formLogin) {
         const clave = document.getElementById("claveLogin").value;
         const usuario = leer("petmatch_usuarios", []).find(u => u.correo === correo && u.clave === clave);
         if (!usuario) return mostrar("mensajeLogin", "Correo o contraseña incorrectos. Verifica tus datos.");
+        if (usuario.estado === "Suspendido") return mostrar("mensajeLogin", "Esta cuenta está suspendida.");
         guardar("petmatch_usuario", usuario);
         mostrar("mensajeLogin", "Inicio de sesión correcto. ¡Bienvenido!");
         setTimeout(() => location.href = "perfil.html", 700);
@@ -120,7 +126,7 @@ if (formMascota) {
         guardar("petmatch_mascotas", mascotas);
         mostrar("mensajeMascota", "¡Mascota publicada! Ya aparece en Mis publicaciones.");
         formMascota.reset();
-        setTimeout(() => location.href = "mis-publicaciones.html", 900);
+        setTimeout(() => location.href = "publicaciones.html", 900);
     });
 }
 
@@ -156,17 +162,32 @@ if (lista) {
     lista.addEventListener("click", (e) => {
         const idEditar = e.target.dataset.editar;
         const idEliminar = e.target.dataset.eliminar;
+        if (!idEditar && !idEliminar) return;
+
+        const actual = usuarioActual();
+        if (!actual) return location.reload();
+
+        const id = Number(idEditar || idEliminar);
+        const publicacion = leer("petmatch_mascotas", []).find(m => m.id === id && m.propietario === actual.correo);
+        if (!publicacion) return location.reload();
+
         if (idEliminar) {
-            if (confirm("¿Deseas eliminar esta publicación?")) {
-                guardar("petmatch_mascotas", todas.filter(m => m.id !== Number(idEliminar)));
+            if (confirm("¿Deseas eliminar esta publicación?") && usuarioActual()?.correo === actual.correo) {
+                const recientes = leer("petmatch_mascotas", []);
+                guardar("petmatch_mascotas", recientes.filter(m => m.id !== id || m.propietario !== actual.correo));
                 location.reload();
             }
         }
         if (idEditar) {
-            const mascota = todas.find(m => m.id === Number(idEditar));
-            const nuevoEstado = prompt("Actualiza el estado (Disponible / En proceso):", mascota.estado);
+            const nuevoEstado = prompt("Actualiza el estado (Disponible / En proceso):", publicacion.estado);
             if (nuevoEstado && ["Disponible", "En proceso"].includes(nuevoEstado)) {
-                mascota.estado = nuevoEstado; guardar("petmatch_mascotas", todas); location.reload();
+                const recientes = leer("petmatch_mascotas", []);
+                const mascota = recientes.find(m => m.id === id && m.propietario === actual.correo);
+                if (mascota && usuarioActual()?.correo === actual.correo) {
+                    mascota.estado = nuevoEstado;
+                    guardar("petmatch_mascotas", recientes);
+                }
+                location.reload();
             } else if (nuevoEstado) alert("Escribe Disponible o En proceso.");
         }
     });
