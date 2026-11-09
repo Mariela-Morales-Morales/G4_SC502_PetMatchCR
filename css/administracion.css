@@ -1,0 +1,88 @@
+/* Resumen de administración */
+.admin-resumen {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 20px;
+}
+
+.admin-resumen a:hover {
+    background-color: #E1E9E1;
+}
+
+.admin-resumen h2 {
+    margin-bottom: 10px;
+}
+
+.admin-total {
+    color: #2F5D50;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.admin-estadisticas {
+    display: grid;
+    gap: 15px;
+}
+
+.admin-estadisticas label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.admin-estadisticas progress {
+    display: block;
+    width: 100%;
+    height: 16px;
+    accent-color: #2F5D50;
+}
+
+/* Tablas y acciones */
+.admin-tabla {
+    overflow-x: auto;
+}
+
+.admin-tabla table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+}
+
+.admin-tabla th,
+.admin-tabla td {
+    padding: 12px;
+    border-bottom: 1px solid #D9E0DA;
+    text-align: left;
+    overflow-wrap: anywhere;
+}
+
+.admin-tabla th {
+    background-color: #E1E9E1;
+    color: #2F5D50;
+}
+
+.admin-tabla td:last-child {
+    min-width: 175px;
+}
+
+.admin-tabla .adopciones-acciones {
+    margin-top: 0;
+}
+
+.admin-tabla .adopciones-boton {
+    padding: 9px 14px;
+    font-size: 14px;
+}
+
+.admin-tabla select {
+    padding: 8px;
+    border: 1px solid #A8BFAF;
+    border-radius: 9px;
+    background-color: #FFFFFF;
+    color: #2D2D2D;
+    font: inherit;
+}
+
+.admin-tabla .admin-vacio {
+    padding: 24px 12px;
+    text-align: center;
+}
