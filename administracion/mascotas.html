@@ -54,7 +54,7 @@
     <main class="adopciones-contenedor">
 
         <h1 class="adopciones-titulo">Administración de mascotas</h1>
-        <p class="adopciones-descripcion">Actualiza el estado de las publicaciones registradas o retíralas del listado.</p>
+        <p class="adopciones-descripcion">Cambia el estado de mascotas de ejemplo o retíralas de esta lista temporal. El catálogo no se modifica.</p>
 
         <nav class="adopciones-nav" aria-label="Administración">
             <a href="index.html">Resumen</a>
@@ -63,10 +63,12 @@
             <a href="solicitudes.html">Solicitudes</a>
         </nav>
 
+        <p class="adopciones-mensaje">Datos ficticios. Los cambios solo se mantienen mientras esta página esté abierta.</p>
+
         <p id="mensaje-admin" class="adopciones-mensaje" role="status" hidden></p>
 
         <section class="adopciones-tarjeta" aria-labelledby="titulo-registros">
-            <h2 id="titulo-registros">Mascotas registradas</h2>
+            <h2 id="titulo-registros">Mascotas de ejemplo</h2>
             <div class="admin-tabla" tabindex="0" role="region" aria-labelledby="titulo-registros">
                 <table aria-labelledby="titulo-registros">
                     <thead>
@@ -91,7 +93,6 @@
         <p>Un hogar cambia una vida. ♡</p>
     </footer>
 
-    <script src="../js/usuarios.js"></script>
     <script src="../js/adopciones.js"></script>
     <script src="../js/administracion.js"></script>
 

@@ -1,191 +1,185 @@
-// Estados del panel
-const estadosUsuarios = ["Activo", "Suspendido"];
-const estadosMascotas = ["Disponible", "En proceso"];
-const estadosSolicitudes = ["Pendiente", "En revisión", "Aprobada", "Rechazada"];
+const estadosUsuariosAdmin = ["Activo", "Suspendido"];
+const estadosMascotasAdmin = ["Disponible", "En proceso"];
+const estadosSolicitudesAdmin = ["Pendiente", "En revisión", "Aprobada", "Rechazada"];
+
+const usuariosDemoAdmin = [
+    { nombre: "Carlos Ramírez", correo: "carlos@ejemplo.com", telefono: "8888-1234", estado: "Activo" },
+    { nombre: "María Fernández", correo: "maria@ejemplo.com", telefono: "8777-4321", estado: "Activo" }
+];
+
+let mascotasDemoAdmin = [
+    { id: "milo", nombre: "Milo", especie: "Perro", responsable: "Rescatista de ejemplo", estado: "Disponible" },
+    { id: "luna", nombre: "Luna", especie: "Gato", responsable: "Rescatista de ejemplo", estado: "Disponible" },
+    { id: "canela", nombre: "Canela", especie: "Perro", responsable: "Rescatista de ejemplo", estado: "Disponible" },
+    { id: "max", nombre: "Max", especie: "Perro", responsable: "Rescatista de ejemplo", estado: "Disponible" },
+    { id: "nala", nombre: "Nala", especie: "Gato", responsable: "Rescatista de ejemplo", estado: "Disponible" },
+    { id: "toby", nombre: "Toby", especie: "Perro", responsable: "Rescatista de ejemplo", estado: "Disponible" }
+];
+
+function crearElementoAdmin(etiqueta, contenido, clase) {
+    const elemento = document.createElement(etiqueta);
+    elemento.textContent = contenido;
+    if (clase) elemento.className = clase;
+    return elemento;
+}
+
+function claseEstadoAdmin(estado) {
+    if (estado === "En revisión" || estado === "En proceso") return "estado-revision";
+    if (estado === "Aprobada" || estado === "Disponible" || estado === "Activo") return "estado-aprobada";
+    if (estado === "Rechazada" || estado === "Suspendido") return "estado-rechazada";
+    return "estado-pendiente";
+}
+
+function mostrarMensajeAdmin(mensaje) {
+    const aviso = document.getElementById("mensaje-admin");
+    if (!aviso) return;
+    aviso.hidden = false;
+    aviso.textContent = mensaje;
+}
 
 function mostrarResumenAdmin() {
     const resumen = document.getElementById("resumen-admin");
     const estadisticas = document.getElementById("estadisticas-solicitudes");
-    const solicitudes = obtenerSolicitudes();
+    resumen.innerHTML = "";
+    estadisticas.innerHTML = "";
+
     const totales = [
-        ["Usuarios registrados", leer("petmatch_usuarios", []).length, "usuarios.html"],
-        ["Mascotas publicadas", leer("petmatch_mascotas", []).length, "mascotas.html"],
-        ["Solicitudes de adopción", solicitudes.length, "solicitudes.html"]
+        { titulo: "Usuarios de ejemplo", cantidad: usuariosDemoAdmin.length, enlace: "usuarios.html" },
+        { titulo: "Mascotas de ejemplo", cantidad: mascotasDemoAdmin.length, enlace: "mascotas.html" },
+        { titulo: "Solicitudes de ejemplo", cantidad: solicitudesEjemplo.length, enlace: "solicitudes.html" }
     ];
 
-    resumen.replaceChildren();
-    estadisticas.replaceChildren();
-
-    totales.forEach(([titulo, cantidad, destino]) => {
-        const tarjeta = crearElemento("a", "", "adopciones-tarjeta");
-        tarjeta.href = destino;
-        tarjeta.append(
-            crearElemento("h2", titulo),
-            crearElemento("p", cantidad, "admin-total")
-        );
+    totales.forEach(function (total) {
+        const tarjeta = crearElementoAdmin("a", "", "adopciones-tarjeta");
+        tarjeta.href = total.enlace;
+        tarjeta.appendChild(crearElementoAdmin("h2", total.titulo));
+        tarjeta.appendChild(crearElementoAdmin("p", total.cantidad, "admin-total"));
         resumen.appendChild(tarjeta);
     });
 
-    estadosSolicitudes.forEach((estado, indice) => {
-        const cantidad = solicitudes.filter(solicitud => solicitud.estado === estado).length;
+    estadosSolicitudesAdmin.forEach(function (estado, indice) {
+        const cantidad = solicitudesEjemplo.filter(function (solicitud) {
+            return solicitud.estado === estado;
+        }).length;
         const fila = document.createElement("div");
-        const etiqueta = crearElemento("label", estado + " (" + cantidad + ")");
+        const etiqueta = crearElementoAdmin("label", estado + " (" + cantidad + ")");
         const barra = document.createElement("progress");
         barra.id = "estadistica-" + indice;
-        barra.max = solicitudes.length || 1;
+        barra.max = solicitudesEjemplo.length || 1;
         barra.value = cantidad;
         etiqueta.htmlFor = barra.id;
-
-        fila.append(etiqueta, barra);
+        fila.appendChild(etiqueta);
+        fila.appendChild(barra);
         estadisticas.appendChild(fila);
     });
 }
 
-function agregarFilaAdmin(campos, estado, clase, acciones) {
+function agregarFilaAdmin(campos, estado, acciones) {
     const fila = document.createElement("tr");
-    campos.forEach(valor => fila.appendChild(crearElemento("td", valor || "—")));
-
+    campos.forEach(function (valor) {
+        fila.appendChild(crearElementoAdmin("td", valor || "—"));
+    });
     const celdaEstado = document.createElement("td");
-    celdaEstado.appendChild(crearElemento("span", estado, "adopciones-estado " + clase));
-
+    celdaEstado.appendChild(crearElementoAdmin("span", estado, "adopciones-estado " + claseEstadoAdmin(estado)));
     const celdaAcciones = document.createElement("td");
     celdaAcciones.appendChild(acciones);
-    fila.append(celdaEstado, celdaAcciones);
+    fila.appendChild(celdaEstado);
+    fila.appendChild(celdaAcciones);
+    document.getElementById("lista-admin").appendChild(fila);
+}
+
+function mostrarVacioAdmin(mensaje) {
+    const fila = document.createElement("tr");
+    const celda = crearElementoAdmin("td", mensaje, "admin-vacio");
+    celda.colSpan = 5;
+    fila.appendChild(celda);
     document.getElementById("lista-admin").appendChild(fila);
 }
 
 function selectorEstadoAdmin(estados, actual, nombre, actualizar) {
     const selector = document.createElement("select");
     selector.setAttribute("aria-label", "Cambiar estado de " + nombre);
-
-    estados.forEach(estado => selector.add(new Option(estado, estado)));
+    estados.forEach(function (estado) {
+        const opcion = document.createElement("option");
+        opcion.value = estado;
+        opcion.textContent = estado;
+        selector.appendChild(opcion);
+    });
     selector.value = actual;
-    selector.addEventListener("change", () => actualizar(selector.value));
-
+    selector.addEventListener("change", function () {
+        actualizar(selector.value);
+    });
     return selector;
 }
 
-function mostrarMensajeAdmin(mensaje) {
-    const aviso = document.getElementById("mensaje-admin");
-    aviso.hidden = false;
-    aviso.textContent = mensaje;
-}
-
-function mostrarVacioAdmin(mensaje) {
-    const fila = document.createElement("tr");
-    const celda = crearElemento("td", mensaje, "admin-vacio");
-    celda.colSpan = 5;
-    fila.appendChild(celda);
-    document.getElementById("lista-admin").appendChild(fila);
-}
-
-// Usuarios registrados
 function mostrarUsuariosAdmin() {
-    const usuarios = leer("petmatch_usuarios", []);
-    if (!usuarios.length) mostrarVacioAdmin("Aún no hay usuarios registrados.");
-
-    usuarios.forEach(usuario => {
-        const estado = usuario.estado || "Activo";
-        const selector = selectorEstadoAdmin(estadosUsuarios, estado, usuario.correo, nuevoEstado => {
-            const registrados = leer("petmatch_usuarios", []);
-            const registro = registrados.find(u => u.correo === usuario.correo);
-
-            if (!registro) return mostrarAdmin();
-
-            registro.estado = nuevoEstado;
-            guardar("petmatch_usuarios", registrados);
-            const sesion = leer("petmatch_usuario", null);
-            if (nuevoEstado === "Suspendido" && sesion?.correo === usuario.correo) {
-                localStorage.removeItem("petmatch_usuario");
-            }
-
+    if (usuariosDemoAdmin.length === 0) mostrarVacioAdmin("No hay usuarios de ejemplo.");
+    usuariosDemoAdmin.forEach(function (usuario) {
+        const selector = selectorEstadoAdmin(estadosUsuariosAdmin, usuario.estado, usuario.correo, function (nuevoEstado) {
+            usuario.estado = nuevoEstado;
             mostrarAdmin();
-            mostrarMensajeAdmin("Estado del usuario actualizado.");
+            mostrarMensajeAdmin("Estado de ejemplo actualizado. No modifica cuentas reales.");
         });
-
-        const clase = estado === "Suspendido" ? "estado-rechazada" : "estado-aprobada";
-        agregarFilaAdmin([usuario.nombre, usuario.correo, usuario.telefono], estado, clase, selector);
+        agregarFilaAdmin([usuario.nombre, usuario.correo, usuario.telefono], usuario.estado, selector);
     });
 }
 
-// Publicaciones registradas
 function mostrarMascotasAdmin() {
-    const publicaciones = leer("petmatch_mascotas", []);
-    if (!publicaciones.length) mostrarVacioAdmin("Aún no hay mascotas publicadas desde el formulario.");
-
-    publicaciones.forEach(mascota => {
-        const estado = mascota.estado || "Disponible";
-        const acciones = crearElemento("div", "", "adopciones-acciones");
-        const selector = selectorEstadoAdmin(estadosMascotas, estado, mascota.nombre, nuevoEstado => {
-            const registros = leer("petmatch_mascotas", []);
-            const registro = registros.find(m => m.id === mascota.id);
-
-            if (!registro) return mostrarAdmin();
-
-            registro.estado = nuevoEstado;
-            guardar("petmatch_mascotas", registros);
+    if (mascotasDemoAdmin.length === 0) mostrarVacioAdmin("No hay mascotas de ejemplo.");
+    mascotasDemoAdmin.forEach(function (mascota) {
+        const acciones = crearElementoAdmin("div", "", "adopciones-acciones");
+        const selector = selectorEstadoAdmin(estadosMascotasAdmin, mascota.estado, mascota.nombre, function (nuevoEstado) {
+            mascota.estado = nuevoEstado;
             mostrarAdmin();
-            mostrarMensajeAdmin("Estado de la publicación actualizado.");
+            mostrarMensajeAdmin("Estado de ejemplo actualizado en esta pantalla.");
         });
-
-        const retirar = crearElemento("button", "Retirar", "adopciones-boton peligro");
+        const retirar = crearElementoAdmin("button", "Retirar", "adopciones-boton peligro");
         retirar.type = "button";
-        retirar.setAttribute("aria-label", "Retirar publicación de " + mascota.nombre);
-        retirar.addEventListener("click", () => {
-            if (!confirm("¿Deseas retirar la publicación de " + mascota.nombre + "?")) return;
-
-            const registros = leer("petmatch_mascotas", []);
-            guardar("petmatch_mascotas", registros.filter(m => m.id !== mascota.id));
+        retirar.addEventListener("click", function () {
+            if (!confirm("¿Retirar a " + mascota.nombre + " de esta demostración?")) return;
+            mascotasDemoAdmin = mascotasDemoAdmin.filter(function (registro) {
+                return registro.id !== mascota.id;
+            });
             mostrarAdmin();
-            mostrarMensajeAdmin("Publicación retirada.");
+            mostrarMensajeAdmin("Mascota retirada de esta demostración. El catálogo original no cambia.");
         });
-
-        acciones.append(selector, retirar);
-        const clase = estado === "En proceso" ? "estado-revision" : "estado-aprobada";
-        agregarFilaAdmin([mascota.nombre, mascota.especie, mascota.propietario], estado, clase, acciones);
+        acciones.appendChild(selector);
+        acciones.appendChild(retirar);
+        agregarFilaAdmin([mascota.nombre, mascota.especie, mascota.responsable], mascota.estado, acciones);
     });
 }
 
-// Solicitudes de adopción
 function mostrarSolicitudesAdmin() {
-    const solicitudes = obtenerSolicitudes();
-    if (!solicitudes.length) mostrarVacioAdmin("Aún no hay solicitudes de adopción.");
-
-    solicitudes.forEach(solicitud => {
-        const nombreMascota = mascotas[solicitud.mascota]?.nombre || solicitud.mascota;
-        const acciones = crearElemento("div", "", "adopciones-acciones");
-        const selector = selectorEstadoAdmin(estadosSolicitudes, solicitud.estado, "solicitud " + solicitud.id, estado => {
-            cambiarEstado(solicitud.id, estado);
+    if (solicitudesEjemplo.length === 0) mostrarVacioAdmin("No hay solicitudes de ejemplo.");
+    solicitudesEjemplo.forEach(function (solicitud) {
+        const acciones = crearElementoAdmin("div", "", "adopciones-acciones");
+        const selector = selectorEstadoAdmin(estadosSolicitudesAdmin, solicitud.estado, "solicitud " + solicitud.id, function (nuevoEstado) {
+            solicitud.estado = nuevoEstado;
             mostrarAdmin();
-            mostrarMensajeAdmin("Estado de la solicitud actualizado.");
+            mostrarMensajeAdmin("Estado de ejemplo actualizado en esta pantalla.");
         });
-
-        const detalle = crearElemento("a", "Ver detalle", "adopciones-boton secundario");
-        detalle.href = "../adopciones/detalle-solicitud.html?id=" + encodeURIComponent(solicitud.id) + "&vista=adoptante";
-
-        acciones.append(selector, detalle);
-        agregarFilaAdmin(
-            [nombreMascota, solicitud.nombre, solicitud.fecha],
-            solicitud.estado,
-            claseEstado(solicitud.estado),
-            acciones
-        );
+        const detalle = crearElementoAdmin("a", "Ver detalle", "adopciones-boton secundario");
+        detalle.href = "../adopciones/detalle-solicitud.html#solicitud-" + solicitud.id;
+        acciones.appendChild(selector);
+        acciones.appendChild(detalle);
+        const mascota = mascotasAdopcion[solicitud.mascota];
+        const nombreMascota = mascota ? mascota.nombre : solicitud.mascota;
+        agregarFilaAdmin([nombreMascota, solicitud.nombre, solicitud.fecha], solicitud.estado, acciones);
     });
 }
 
 function mostrarAdmin() {
-    const pagina = document.body.dataset.admin;
-    if (pagina === "resumen") return mostrarResumenAdmin();
-
-    document.getElementById("lista-admin").replaceChildren();
+    const pagina = document.body.getAttribute("data-admin");
+    if (pagina === "resumen") {
+        mostrarResumenAdmin();
+        return;
+    }
+    const lista = document.getElementById("lista-admin");
+    if (!lista) return;
+    lista.innerHTML = "";
     if (pagina === "usuarios") mostrarUsuariosAdmin();
     if (pagina === "mascotas") mostrarMascotasAdmin();
     if (pagina === "solicitudes") mostrarSolicitudesAdmin();
 }
 
 document.addEventListener("DOMContentLoaded", mostrarAdmin);
-window.addEventListener("storage", evento => {
-    if (["petmatch_usuarios", "petmatch_mascotas", CLAVE_SOLICITUDES].includes(evento.key)) {
-        mostrarAdmin();
-    }
-});
