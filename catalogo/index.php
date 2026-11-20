@@ -82,6 +82,7 @@ foreach ($mascotas as $mascota) {
     <link rel="icon" href="../img/logos/05_Favicon_PetMatchCR.png">
     <link rel="stylesheet" href="../css/estilos.css">
     <link rel="stylesheet" href="estilos-catalogo.css">
+    <script src="../js/filtrosCatalogo.js" defer></script>
 </head>
 <body>
     <header class="encabezado">

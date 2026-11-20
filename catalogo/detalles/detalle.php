@@ -129,7 +129,7 @@ $nombreResponsable = $usuario ? $usuario["nombre"] : "Sin responsable registrado
                         <strong><?= htmlspecialchars($nombreResponsable) ?></strong>
                     </div>
                     <?php if ($mascota["estado"] === "Disponible"): ?>
-                        <a href="../../adopciones/solicitar-adopcion.html" class="boton-solicitar">
+                        <a href="../../adopciones/solicitar-adopcion.html?id_mascota=<?= (int) $mascota["id_mascota"] ?>" class="boton-solicitar">
                             Solicitar adopción
                         </a>
                         <p class="aviso-solicitud">
