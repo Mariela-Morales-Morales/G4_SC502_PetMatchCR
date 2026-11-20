@@ -1,16 +1,12 @@
-/* PetMatch CR - Persona 3: solicitudes de demostración.
-   Utiliza formularios, arreglos, objetos, eventos y DOM de semanas 6 y 7.
-   Las solicitudes nuevas permanecen en la pantalla abierta;
-   para conservarlas ENTRE páginas será necesario implementar PHP (semana 8).
-*/
 const mascotasAdopcion = {
-    luna: { nombre: "Luna", imagen: "../img/mascotas/luna/luna-1.jpg" },
-    max: { nombre: "Max", imagen: "../img/mascotas/max/max-1.jpg" },
-    canela: { nombre: "Canela", imagen: "../img/mascotas/canela/canela-1.jpg" },
-    milo: { nombre: "Milo", imagen: "../img/mascotas/milo/milo-1.jpg" },
-    nala: { nombre: "Nala", imagen: "../img/mascotas/nala/nala-1.jpg" },
-    toby: { nombre: "Toby", imagen: "../img/mascotas/toby/toby-1.jpg" }
+    luna: { nombre: "Luna", imagen: "../img/mascotas/Gatos/Luna/Luna-1.jpg" },
+    max: { nombre: "Max", imagen: "../img/mascotas/Perros/Max/Max-1.jpg" },
+    canela: { nombre: "Canela", imagen: "../img/mascotas/Perros/Canela/Canela-1.jpg" },
+    milo: { nombre: "Milo", imagen: "../img/mascotas/Perros/Milo/Milo-1.jpg" },
+    nala: { nombre: "Nala", imagen: "../img/mascotas/Gatos/Nala/Nala-1.jpg" },
+    toby: { nombre: "Toby", imagen: "../img/mascotas/Perros/Toby/Toby-1.jpg" }
 };
+
 const solicitudesEjemplo = [
     { id: 1, mascota: "luna", nombre: "Carlos Ramírez", correo: "carlos@ejemplo.com", fecha: "2026-11-01", estado: "Pendiente" },
     { id: 2, mascota: "max", nombre: "María Fernández", correo: "maria@ejemplo.com", fecha: "2026-11-03", estado: "En revisión" },

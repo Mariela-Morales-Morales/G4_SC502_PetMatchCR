@@ -1,0 +1,177 @@
+/* PetMatch CR - Persona 1. Diseño horizontal del catálogo dinámico. */
+/* Se carga después de css/estilos.css y afecta únicamente catalogo/index.php. */
+
+.catalogo-dinamico .presentacion-catalogo {
+    padding-bottom: 24px;
+}
+
+.catalogo-dinamico .contenido-catalogo {
+    display: block;
+    max-width: 1600px;
+    padding: 0 4% 70px;
+}
+
+.catalogo-dinamico .panel-filtros {
+    width: 100%;
+    padding: 24px 26px 18px;
+    margin: 0 0 36px;
+}
+
+.catalogo-dinamico .encabezado-filtros {
+    padding-bottom: 13px;
+    margin-bottom: 20px;
+}
+
+.catalogo-dinamico .encabezado-filtros h2 {
+    font-size: 20px;
+}
+
+.catalogo-dinamico .formulario-filtros {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px;
+    align-items: end;
+}
+
+.catalogo-dinamico .grupo-filtro {
+    min-width: 0;
+    margin: 0;
+}
+
+.catalogo-dinamico .grupo-filtro label {
+    margin-bottom: 8px;
+    font-size: 13px;
+}
+
+.catalogo-dinamico .grupo-filtro select {
+    min-width: 0;
+    padding: 12px 8px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.catalogo-dinamico .acciones-filtros {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    justify-content: flex-end;
+    padding-top: 6px;
+}
+
+.catalogo-dinamico .nota-filtros {
+    flex: 1 1 240px;
+    padding: 0;
+    border: 0;
+    margin: 0;
+}
+
+.catalogo-dinamico .boton-buscar-catalogo,
+.catalogo-dinamico .boton-limpiar-catalogo {
+    display: inline-block;
+    width: auto;
+    margin: 0;
+    padding: 12px 20px;
+    border: 1px solid #2F5D50;
+    border-radius: 24px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+}
+
+.catalogo-dinamico .boton-buscar-catalogo {
+    background-color: #2F5D50;
+    color: #FFFFFF;
+}
+
+.catalogo-dinamico .boton-buscar-catalogo:hover {
+    background-color: #24493F;
+}
+
+.catalogo-dinamico .boton-limpiar-catalogo {
+    background-color: #FFFFFF;
+    color: #2F5D50;
+}
+
+.catalogo-dinamico .boton-limpiar-catalogo:hover {
+    background-color: #E1E9E1;
+}
+
+.catalogo-dinamico .seccion-mascotas {
+    width: 100%;
+}
+
+.catalogo-dinamico .cuadricula-mascotas {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+.catalogo-dinamico .tarjeta-mascota {
+    min-width: 0;
+    overflow: hidden;
+}
+
+/* Fotografías verticales 3:4: mostrar la mascota completa, sin recortar. */
+.catalogo-dinamico .foto-mascota img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 4;
+    object-fit: contain;
+    object-position: center;
+    background-color: #E1E9E1;
+}
+
+@media (max-width: 1200px) {
+    .catalogo-dinamico .formulario-filtros {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .catalogo-dinamico .cuadricula-mascotas {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 850px) {
+    .catalogo-dinamico .formulario-filtros {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .catalogo-dinamico .cuadricula-mascotas {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 550px) {
+    .catalogo-dinamico .contenido-catalogo {
+        padding: 0 5% 50px;
+    }
+
+    .catalogo-dinamico .panel-filtros {
+        padding: 20px 16px;
+    }
+
+    .catalogo-dinamico .formulario-filtros {
+        gap: 13px;
+    }
+
+    .catalogo-dinamico .acciones-filtros {
+        justify-content: stretch;
+    }
+
+    .catalogo-dinamico .nota-filtros {
+        flex-basis: 100%;
+    }
+
+    .catalogo-dinamico .boton-buscar-catalogo,
+    .catalogo-dinamico .boton-limpiar-catalogo {
+        flex: 1 1 130px;
+    }
+
+    .catalogo-dinamico .cuadricula-mascotas {
+        grid-template-columns: 1fr;
+    }
+}
